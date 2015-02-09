@@ -25,11 +25,10 @@ module.exports = (grunt) ->
       dist:
         options:
           host: process.env.FTP_HOST
-          port: 21
-          dest: '/public_html/'
+          dest: 'public_html'
           username: process.env.FTP_USERNAME
           password: process.env.FTP_PASSWORD
-        files:
+        files: [{
           expand: yes
           cwd: 'target'
           src: [
@@ -37,11 +36,11 @@ module.exports = (grunt) ->
             '**/*.css'
             '**/*.js'
           ]
+        }]
           
   grunt.loadNpmTasks 'grunt-ftp-push'
   grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-connect'
   
   grunt.registerTask 'default', ['copy']
-  grunt.registerTask 'deploy', ['ftp_push']
   
