@@ -1,3 +1,14 @@
-
 # Zed
 .zedstate
+
+# Target
+target/
+
+# node
+node_modules/
+
+# Bower
+bower_components/
+
+# Logs
+*.log
