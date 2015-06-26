@@ -145,7 +145,7 @@ module.exports = (grunt) ->
                 ]
 
 
-            fa:
+            fonts:
                 files: [
                     {
                         expand: yes
@@ -168,6 +168,20 @@ module.exports = (grunt) ->
 
         clean:
             target: ['<%= target_dir %>/*']
+
+        inline:
+            target:
+                src: 'target/public_html/index.html'
+                dest: 'index.html'
+                options:
+                    tag: ''
+
+        cssUrlEmbed:
+            target:
+                src: 'target/public_html/app.css'
+                dest: 'target/public_html/app.css'
+                options:
+                    failOnMissingUrl: no
 
         connect:
             serve:
@@ -216,14 +230,17 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-contrib-connect'
     grunt.loadNpmTasks 'grunt-contrib-imagemin'
     grunt.loadNpmTasks 'grunt-contrib-watch'
+    grunt.loadNpmTasks 'grunt-css-url-embed'
     grunt.loadNpmTasks 'grunt-gitinfo'
+    grunt.loadNpmTasks 'grunt-inline'
 
-    grunt.registerTask 'debug:prepare', ['gitinfo', 'clean', 'copy:resrc', 'copy:fa', 'browserify:libs', 'stylus:libs']
+    grunt.registerTask 'debug:prepare', ['gitinfo', 'clean', 'copy:resrc', 'copy:fonts', 'browserify:libs', 'stylus:libs']
     grunt.registerTask 'debug:build', ['browserify:debug', 'jade:debug', 'stylus:debug']
     grunt.registerTask 'livereload', ['debug:prepare', 'debug:build', 'connect:debug', 'watch']
 
     grunt.registerTask 'build', ['gitinfo', 'coffeelint', 'clean', 'browserify:dist', 'stylus:dist', 'jade:dist']
     grunt.registerTask 'minify', ['uglify', 'cssmin', 'imagemin']
-    grunt.registerTask 'default', ['build', 'minify', 'copy:dist', 'copy:fa']
+    grunt.registerTask 'default', ['build', 'minify', 'copy']
+    grunt.registerTask 'package', ['default', 'cssUrlEmbed', 'inline', 'clean']
 
     return
