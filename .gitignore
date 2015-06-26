@@ -1,9 +1,6 @@
 # Zed
 .zedstate
 
-# Target
-target/
-
 # node
 node_modules/
 
@@ -12,3 +9,6 @@ bower_components/
 
 # Logs
 *.log
+
+# Target builds
+target/

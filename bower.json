@@ -1,0 +1,14 @@
+{
+  "name": "rrdelaney.github.io",
+  "version": "0.0.3",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.2",
+    "angular-ui-router": "~0.2.13",
+    "angular-bootstrap": "~0.12.1",
+    "font-awesome": "~4.3.0",
+    "bootstrap-stylus": "~4.0.3",
+    "github": "~0.10.6",
+    "animate.css": "~3.3.0"
+  }
+}
