@@ -23,4 +23,8 @@ angular.module 'site', ['ui.router'
             content:
                 template: '<p>Future Blog!</p>'
 
-    $urlRouterProvider.otherwise 'home'
+    .state 'resume',
+        url: '/resume'
+        template: require '../templates/resume/resume.jade'
+
+    $urlRouterProvider.otherwise 'resume'
