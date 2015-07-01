@@ -1,7 +1,4 @@
-js_dependencies = [
-    './bower_components/angular-bootstrap/ui-bootstrap-tpls.js:angular-bootstrap'
-    './bower_components/angular-ui-router/release/angular-ui-router.js:angular-ui-router'
-]
+config = require './config'
 
 module.exports = (grunt) ->
     require('time-grunt')(grunt)
@@ -36,7 +33,7 @@ module.exports = (grunt) ->
                         version: '<%= pkg.version %>'
                         __debug: no
                     ]]
-                    external: js_dependencies
+                    external: config.js_dependencies
                     browserifyOptions:
                         extensions: ['.coffee']
                         debug: yes
@@ -46,7 +43,7 @@ module.exports = (grunt) ->
                 src: []
                 options:
                     transform: ['browserify-shim']
-                    require: js_dependencies
+                    require: config.js_dependencies
                     browserifyOptions:
                         debug: yes
 
@@ -149,7 +146,7 @@ module.exports = (grunt) ->
                 files: [
                     {
                         expand: yes
-                        cwd: 'bower_components/font-awesome'
+                        cwd: 'bower_components/font-awesome-stylus'
                         src: ['fonts/**']
                         dest: '<%= target_dir %>/'
                     }
@@ -219,6 +216,13 @@ module.exports = (grunt) ->
             options:
                 livereload: true
 
+        'ftp-deploy':
+            target:
+                auth: config.ftp_auth
+
+                src: '<%= src_dir %>/public_html'
+                dest: 'public_html'
+
     grunt.loadNpmTasks 'grunt-browserify'
     grunt.loadNpmTasks 'grunt-coffeelint'
     grunt.loadNpmTasks 'grunt-contrib-jade'
@@ -231,6 +235,7 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-contrib-imagemin'
     grunt.loadNpmTasks 'grunt-contrib-watch'
     grunt.loadNpmTasks 'grunt-css-url-embed'
+    grunt.loadNpmTasks 'grunt-ftp-deploy'
     grunt.loadNpmTasks 'grunt-gitinfo'
     grunt.loadNpmTasks 'grunt-inline'
 
