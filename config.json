@@ -1,0 +1,6 @@
+{
+    "js_dependencies": [
+        "./bower_components/angular-bootstrap/ui-bootstrap-tpls.js:angular-bootstrap",
+        "./bower_components/angular-ui-router/release/angular-ui-router.js:angular-ui-router"
+    ]
+}
