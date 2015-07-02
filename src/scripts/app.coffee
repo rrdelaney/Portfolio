@@ -1,9 +1,7 @@
 angular = require 'angular'
 require 'angular-ui-router'
-require 'angular-bootstrap'
 
-angular.module 'site', ['ui.router'
-                       'ui.bootstrap']
+angular.module 'site', ['ui.router']
 
 .config ($stateProvider, $urlRouterProvider) ->
     $stateProvider.state 'home',
