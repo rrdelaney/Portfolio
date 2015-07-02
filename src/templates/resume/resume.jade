@@ -1,26 +1,26 @@
 .resume
     section.container.main
-        header.row
-            .title.col-xs-5
+        header(layout='row')
+            .title(flex='40')
                 h1 Ryan Delaney
                 h5 Software Engineer \\ Web Developer
-            .col-xs-3.header-col
+            .header-col(flex='30')
                 p
                     i.fa.fa-phone.fa-lg
                     | 516-281-6378
                 p
                     i.fa.fa-user.fa-lg
                     | ryandel.com
-            .col-xs-4.header-col
+            .header-col(flex='30')
                 p
                     i.fa.fa-envelope.fa-lg
                     | rrdelaney@outlook.com
                 p
                     i.fa.fa-github.fa-lg
                     | github.com/rrdelaney
-        .row
-            .col-xs-2
-                .row.category-row
+        div(layout='row')
+            div(flex='15')
+                .category-row(flex)
                     h5 Education
                     
                     .category
@@ -30,7 +30,7 @@
                         p Computer Systems Engineering
                         p GPA - 3.23
                 
-                .row.category-row
+                .category-row(flex)
                     h5 Coursework
                     
                     .category
@@ -41,19 +41,15 @@
                         p Electric Circuits
                         p Embedded Control
                 
-                .row.category-row
+                .category-row(flex)
                     h5 Honors
                     
                     .category.no-bottom
                         p Rensselaer Medal Award
                         p Dean's List (2013 - Present)
-                        p
-                            | 3
-                            small rd
-                            |  place NYSSEF Computer Engineering (2013)
             
-            .col-xs-10
-                .row.category-row
+            div(flex='85')
+                .category-row(flex)
                     h4 Professional Experience
                     
                     .category
@@ -88,7 +84,7 @@
                             li Application ran custom analytics on a large database of readings from mission critical machines
                             li Responsibilities included meeting deadlines for features, code documenation, and integrating code into the existing system
                             
-                .row.category-row
+                .category-row(flex)
                     h4 Projects
                     
                     .category
@@ -111,7 +107,7 @@
                             li Designed for communicating with others in the local area
                             li Developed server backend using Node.JS and MongoDB, frontend uses Ionic framework with Apache Cordova and Angular.js
                 
-                .row.category-row
+                .category-row(flex)
                     h4 Skills
                     
                     .category.no-bottom
