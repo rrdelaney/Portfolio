@@ -1,0 +1,30 @@
+letterCount = 7
+letterDelay = .15
+letterAnimationTime = letterCount * letterDelay
+
+.home
+    .main
+        margin 0 auto
+        text-align center
+        padding-top 20vh
+
+        .name
+            .letter
+                font-size 400%
+                padding-left 2px
+                padding-right 2px
+                animation-duration letterDelay
+
+                for index in (2..letterCount)
+                    &:nth-child({index})
+                        animation-delay unit((index - 1) * letterDelay, 's')
+
+            .space
+                padding-left 10px
+                padding-right 10px
+
+        .description
+            .line
+                for index in (1..3)
+                    &:nth-child({index})
+                        animation-delay unit((index / 2) + letterAnimationTime, 's')
