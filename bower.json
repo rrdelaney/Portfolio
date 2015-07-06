@@ -9,6 +9,7 @@
     "font-awesome-stylus": "master",
     "angular-animate": "~1.4.1",
     "angular-material": "~0.10.0",
-    "bootstrap-stylus": "~4.0.5"
+    "bootstrap-stylus": "~4.0.5",
+    "material-color": "~2.1.0"
   }
 }

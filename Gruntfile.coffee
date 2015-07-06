@@ -211,7 +211,7 @@ module.exports = (grunt) ->
 
             coffee:
                 files: ['<%= src_dir %>/scripts/**/*.coffee']
-                tasks: ['browserify:debug']
+                tasks: ['gitinfo', 'browserify:debug']
 
             options:
                 livereload: true
