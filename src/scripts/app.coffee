@@ -14,7 +14,7 @@ angular.module 'site', ['ui.router'
         url: '/home'
         template: require '../templates/home/home.jade'
 
-    .state 'home.blog',
+    .state 'blog',
         url: '/blog'
         template: '<p>Future Blog!</p>'
 
@@ -22,4 +22,4 @@ angular.module 'site', ['ui.router'
         url: '/resume'
         template: require '../templates/resume/resume.jade'
 
-    $urlRouterProvider.otherwise 'resume'
+    $urlRouterProvider.otherwise 'home'
