@@ -1,6 +1,14 @@
+@require 'material-color/material-color-prefixed'
+
 letterCount = 7
 letterDelay = .15
 letterAnimationTime = letterCount * letterDelay
+
+wordCount = 3
+wordDelay = .5
+wordAnimationTime = (wordCount + 1) * wordDelay
+
+totalAnimationTime = letterAnimationTime + wordAnimationTime + .5
 
 .home
     .main
@@ -25,6 +33,16 @@ letterAnimationTime = letterCount * letterDelay
 
         .description
             .line
-                for index in (1..3)
+                for index in (1..wordCount)
                     &:nth-child({index})
-                        animation-delay unit((index / 2) + letterAnimationTime, 's')
+                        animation-delay unit((index * wordDelay) + letterAnimationTime, 's')
+
+    .buttons
+        margin 0 auto
+        text-align center
+
+        .md-button
+            for background, index in $md-clr-indigo $md-clr-pink $md-clr-deep-purple
+               &:nth-child({index + 1})
+                   background-color background
+                   animation-delay unit(totalAnimationTime, 's')

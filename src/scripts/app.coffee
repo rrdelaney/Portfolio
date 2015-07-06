@@ -1,25 +1,22 @@
 angular = require 'angular'
 require 'angular-ui-router'
+require 'angular-animate'
+require 'angular-aria'
+require 'angular-material'
+require './controllers'
 
-angular.module 'site', ['ui.router']
+angular.module 'site', ['ui.router'
+                        'ngMaterial'
+                        'site.controllers']
 
 .config ($stateProvider, $urlRouterProvider) ->
     $stateProvider.state 'home',
         url: '/home'
-        template: require '../templates/home/layout.jade'
-        abstract: yes
-
-    .state 'home.index',
-        url: ''
-        views:
-            content:
-                template: require '../templates/home/home.jade'
+        template: require '../templates/home/home.jade'
 
     .state 'home.blog',
         url: '/blog'
-        views:
-            content:
-                template: '<p>Future Blog!</p>'
+        template: '<p>Future Blog!</p>'
 
     .state 'resume',
         url: '/resume'
