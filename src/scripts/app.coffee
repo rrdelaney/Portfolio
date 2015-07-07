@@ -23,3 +23,8 @@ angular.module 'site', ['ui.router'
         template: require '../templates/resume/resume.jade'
 
     $urlRouterProvider.otherwise 'home'
+
+#.config ($mdThemingProvider) ->
+#    $mdThemingProvider.theme 'default'
+#    .primaryPalette 'indigo'
+#    .accentPalette 'teal'
