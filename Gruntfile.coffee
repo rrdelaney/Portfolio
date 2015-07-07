@@ -156,24 +156,24 @@ module.exports = (grunt) ->
                 ]
 
         clean:
-            target: ['<%= target_dir %>/*']
+            dist: ['<%= target_dir %>/*']
 
         inline:
-            target:
+            dist:
                 src: 'target/public_html/index.html'
                 dest: 'index.html'
                 options:
                     tag: ''
 
         cssUrlEmbed:
-            target:
+            dist:
                 src: 'target/public_html/app.css'
                 dest: 'target/public_html/app.css'
                 options:
                     failOnMissingUrl: no
 
         connect:
-            serve:
+            dist:
                 options:
                     base: '<%= target_dir %>'
                     keepalive: yes
@@ -185,13 +185,9 @@ module.exports = (grunt) ->
                     livereload: yes
 
         watch:
-            app:
-                files: ['<%= src_dir %>/templates/app.jade']
-                tasks: ['gitinfo', 'jade:debug']
-
             jade:
-                files: ['<%= src_dir %>/templates/**/*.jade', '!<%= src_dir %>/templates/app.jade']
-                tasks: ['gitinfo', 'browserify:debug']
+                files: ['<%= src_dir %>/templates/**/*.jade']
+                tasks: ['gitinfo', 'jade:debug']
 
             stylus:
                 files: ['<%= src_dir %>/styles/**/*.styl']
@@ -231,13 +227,23 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-gitinfo'
     grunt.loadNpmTasks 'grunt-inline'
 
-    grunt.registerTask 'debug:prepare', ['gitinfo', 'clean', 'copy:resrc', 'copy:fonts', 'browserify:libs', 'stylus:libs']
+    grunt.registerTask 'debug:prepare', ['gitinfo', 'clean', 'browserify:libs', 'stylus:libs']
     grunt.registerTask 'debug:build', ['browserify:debug', 'jade:debug', 'stylus:debug']
-    grunt.registerTask 'livereload', ['debug:prepare', 'debug:build', 'connect:debug', 'watch']
+    grunt.registerTask 'debug:stage', ['copy:resrc', 'copy:fonts']
+    grunt.registerTask 'debug', ['debug:prepare', 'debug:build', 'debug:stage']
+    grunt.registerTask 'livereload', ['debug', 'connect:debug', 'watch']
 
-    grunt.registerTask 'build', ['gitinfo', 'coffeelint', 'clean', 'browserify:dist', 'stylus:dist', 'jade:dist']
-    grunt.registerTask 'minify', ['uglify', 'cssmin', 'imagemin']
-    grunt.registerTask 'default', ['build', 'minify', 'copy']
-    grunt.registerTask 'package', ['default', 'cssUrlEmbed', 'inline', 'clean']
+    grunt.registerTask 'dist:prepare', ['gitinfo',  'clean', 'coffeelint']
+    grunt.registerTask 'dist:build', ['browserify:dist', 'stylus:dist', 'jade:dist']
+    grunt.registerTask 'dist:stage', ['uglify', 'cssmin', 'imagemin', 'copy:dist', 'copy:fonts']
+    grunt.registerTask 'dist', ['dist:prepare', 'dist:build', 'dist:stage']
+    grunt.registerTask 'serve', ['dist', 'connect:dist']
+
+    grunt.registerTask 'package:prepare', ['clean']
+    grunt.registerTask 'package:build', ['dist']
+    grunt.registerTask 'package:stage', ['cssUrlEmbed', 'inline']
+    grunt.registerTask 'package', ['package:prepare', 'package:build', 'package:stage']
+
+    grunt.registerTask 'default', ['dist']
 
     return
