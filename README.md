@@ -1,6 +1,3 @@
-ryandel.com
-===========
+## rrdelaney.github.io
 
-The source for my personal website.
-Currently in the process of switching to using ui-router and broswerify.
-Only hosts my resume right now.
+Hosts the source for http://ryandelaney.io
