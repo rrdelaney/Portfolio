@@ -3,16 +3,18 @@ require 'angular-ui-router'
 require 'angular-animate'
 require 'angular-aria'
 require 'angular-material'
+require 'angular-template-tag'
 require './controllers'
 
 angular.module 'site', ['ui.router'
+                        'templateTag'
                         'ngMaterial'
                         'site.controllers']
 
 .config ($stateProvider, $urlRouterProvider) ->
     $stateProvider.state 'home',
         url: '/home'
-        template: require '../templates/home/home.jade'
+        templateUrl: 'home/home.jade'
 
     .state 'blog',
         url: '/blog'
@@ -20,7 +22,7 @@ angular.module 'site', ['ui.router'
 
     .state 'resume',
         url: '/resume'
-        template: require '../templates/resume/resume.jade'
+        templateUrl: 'resume/resume.jade'
 
     $urlRouterProvider.otherwise 'home'
 

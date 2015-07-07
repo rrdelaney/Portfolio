@@ -10,6 +10,7 @@
     "angular-animate": "~1.4.1",
     "angular-material": "~0.10.0",
     "bootstrap-stylus": "~4.0.5",
-    "material-color": "~2.1.0"
+    "material-color": "~2.1.0",
+    "angular-template-tag": "~1.0.0"
   }
 }

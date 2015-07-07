@@ -16,11 +16,7 @@ module.exports = (grunt) ->
                 files:
                     '<%= target_dir %>/app.js': ['<%= src_dir %>/scripts/app.coffee']
                 options:
-                    transform: ['coffeeify', 'browserify-shim', 'debowerify', ['browserify-plain-jade',
-                        build: '<%= gitinfo.local.branch.current.shortSHA %>'
-                        version: '<%= pkg.version %>'
-                        __debug: no
-                    ]]
+                    transform: ['coffeeify', 'browserify-shim', 'debowerify']
                     browserifyOptions:
                         extensions: ['.coffee']
 
@@ -28,11 +24,7 @@ module.exports = (grunt) ->
                 files:
                     '<%= target_dir %>/app.js': ['<%= src_dir %>/scripts/app.coffee']
                 options:
-                    transform: ['coffeeify', 'browserify-shim', ['browserify-plain-jade',
-                        build: '<%= gitinfo.local.branch.current.shortSHA %>'
-                        version: '<%= pkg.version %>'
-                        __debug: no
-                    ]]
+                    transform: ['coffeeify', 'browserify-shim']
                     external: config.js_dependencies
                     browserifyOptions:
                         extensions: ['.coffee']

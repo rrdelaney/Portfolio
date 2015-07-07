@@ -4,7 +4,6 @@
   "private": true,
   "devDependencies": {
     "browserify": "^9.0.8",
-    "browserify-plain-jade": "rrdelaney/browserify-plain-jade#master",
     "browserify-shim": "^3.8.5",
     "coffeeify": "^1.0.0",
     "debowerify": "^1.2.0",
