@@ -19,6 +19,9 @@ script:
 after_success:
     - git config user.name "Travis CI"
     - git config user.email "rrdelaney@outlook.com"
+    - git remote add deploy https://rrdelaney:${GITHUB_TOKEN}@github.com/rrdelaney/rrdelaney.github.io.git
+    - git fetch
+    - git checkout -b master deploy/master
     - git add index.html
     - git commit -m "Travis CI Build"
-    - git push --force --quiet https://${GITHUB_TOKEN}@github.com/rrdelaney/rrdelaney.github.io.git master
+    - git push --force --quiet deploy master
