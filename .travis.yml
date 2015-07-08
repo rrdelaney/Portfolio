@@ -19,11 +19,10 @@ script:
 after_success:
     - git config user.name "Travis CI"
     - git config user.email "rrdelaney@outlook.com"
-    - git remote add deploy https://rrdelaney:${GITHUB_TOKEN}@github.com/rrdelaney/rrdelaney.github.io.git
-    - git fetch
-    - git stash
-    - git checkout -b master deploy/master
-    - git stash pop
+    - git remote add deploy https://${GITHUB_TOKEN}@github.com/rrdelaney/rrdelaney.github.io.git
+    - git checkout --orphan masterStaging
+    - git reset -- .
     - git add index.html
+    - git add CNAME
     - git commit -m "Travis CI Build"
-    - git push --force --quiet deploy master
+    - git push --force --quiet -u deploy masterStaging:master
