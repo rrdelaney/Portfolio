@@ -25,4 +25,4 @@ after_success:
     - git add index.html
     - git add CNAME
     - git commit -m "Travis CI Build"
-    - git push --force --quiet deploy master
+    - git push --force --quiet -u deploy masterStaging:master
