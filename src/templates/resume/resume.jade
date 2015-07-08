@@ -1,29 +1,44 @@
+mixin headerIcon(text, icon)
+    p
+        i.fa.fa-lg(class=icon)
+        = text
+
+mixin sideCategory(title)
+    h5= title
+    
+    .category&attributes(attributes)
+        block
+
+mixin category(title, subtitle)
+    .category&attributes(attributes)
+        h5
+            = title
+            | 
+            small
+                strong= subtitle
+        
+        ul
+            block
+
 .resume
     section.container.main
         header(layout='row')
             .title(flex='45')
                 h1 Ryan Delaney
                 h5 Software Engineer \\ Web Developer
+
             .header-col(flex='25')
-                p
-                    i.fa.fa-code.fa-lg
-                    | ryandelaney.io
-                p
-                    i.fa.fa-phone.fa-lg
-                    | 516-281-6378
+                +headerIcon('ryandelaney.io', 'fa-code')
+                +headerIcon('516-281-6378', 'fa-phone')
+
             .header-col(flex='30')
-                p
-                    i.fa.fa-envelope.fa-lg
-                    | ryan@ryandelaney.io
-                p
-                    i.fa.fa-github.fa-lg
-                    | github.com/rrdelaney
+                +headerIcon('ryan@ryandelaney.io', 'fa-envelope')
+                +headerIcon('github.com/rrdelaney', 'fa-github')
+
         div(layout='row')
             div(flex='15')
                 .category-row(flex)
-                    h5 Education
-                    
-                    .category
+                    +sideCategory('Education')
                         p Rensselaer Polytechnic Institute
                         p Graduating December 2016
                         p Computer Science
@@ -31,9 +46,7 @@
                         p GPA - 3.23
                 
                 .category-row(flex)
-                    h5 Coursework
-                    
-                    .category
+                    +sideCategory('Coursework')
                         p Data Structures
                         p Algorithms
                         p Signals & Systems
@@ -42,9 +55,7 @@
                         p Embedded Control
                 
                 .category-row(flex)
-                    h5 Honors
-                    
-                    .category.no-bottom
+                    +sideCategory('Honors').no-bottom
                         p Rensselaer Medal Award
                         p Dean's List (2013 - Present)
             
@@ -52,60 +63,35 @@
                 .category-row(flex)
                     h4 Professional Experience
                     
-                    .category
-                        h5
-                            | Software Engineering Intern 
-                            small
-                                strong Datto (Summer 2015)
-                        ul
-                            li Developed on an existing codebase to add new features and fix bugs
-                            li Used PHP to render client-facing UI and interact the lower-level filesystem
-                            li All code was accompanied with unit tests and negative tests
-                            li Worked in a scrum environment and used agile methods to complete goals
+                    +category('Software Engineering Intern', 'Datto (Summer 2015)')
+                        li Developed on an existing codebase to add new features and fix bugs
+                        li Used PHP to render client-facing UI and interact the lower-level filesystem
+                        li All code was accompanied with unit tests and negative tests
+                        li Worked in a scrum environment and used agile methods to complete goals
                     
-                    .category
-                        h5
-                            | Web Developer 
-                            small
-                                strong Rensselaer Union (Fall 2013 - Present)
-                        ul
-                            li Working on a new Django web app to replace the Union's Club Management System
-                            li Developing the front-end for the website, as well as some of the backend
-                            li Work on a team with several other developers managing workflow with Git
-                            li Responsibilities include designing a responsive website and working with other developers to complete features and fix bugs
+                    +category('Web Developer', 'Rensselaer Union (Fall 2013 - Present)')
+                        li Working on a new Django web app to replace the Union's Club Management System
+                        li Developing the front-end for the website, as well as some of the backend
+                        li Work on a team with several other developers managing workflow with Git
+                        li Responsibilities include designing a responsive website and working with other developers to complete features and fix bugs
             
-                    .category
-                        h5
-                            | Software Engineering Intern 
-                            small
-                                strong Power Management Concepts (Summer 2014)
-                        ul
-                            li Developed RESTful web application in Scala with MongoDB
-                            li Application ran custom analytics on a large database of readings from mission critical machines
-                            li Responsibilities included meeting deadlines for features, code documenation, and integrating code into the existing system
+                    +category('Software Engineering Intern', 'Power Management Concepts (Summer 2014)')
+                        li Developed RESTful web application in Scala with MongoDB
+                        li Application ran custom analytics on a large database of readings from mission critical machines
+                        li Responsibilities included meeting deadlines for features, code documenation, and integrating code into the existing system
                             
                 .category-row(flex)
                     h4 Projects
                     
-                    .category
-                        h5
-                            | Electronics Team Lead 
-                            small
-                                strong Rensselaer Electric Vehicle (Fall 2013 - Spring 2015)
-                        ul
-                            li Design, build, and test an electronics system for an all-electric car
-                            li Manage the electrical team, including budgeting, design reviews and delegating tasks
-                            li Develop the team's website and hook in real-time data from systems on the car
+                    +category('Electronics Team Lead', 'Rensselaer Electric Vehicle (Fall 2013 - Spring 2015)')
+                        li Design, build, and test an electronics system for an all-electric car
+                        li Manage the electrical team, including budgeting, design reviews and delegating tasks
+                        li Develop the team's website and hook in real-time data from systems on the car
                             
-                    .category
-                        h5
-                            | TopGun 
-                            small
-                                strong Mobile App (Summer 2014 - Spring 2015) github.com/rrdelaney/TopGun-Server
-                        ul
-                            li Location-based messaging app for iOS and Android
-                            li Designed for communicating with others in the local area
-                            li Developed server backend using Node.JS and MongoDB, frontend uses Ionic framework with Apache Cordova and Angular.js
+                    +category('TopGun', 'Mobile App (Summer 2014 - Spring 2015) github.com/rrdelaney/TopGun-Server')
+                        li Location-based messaging app for iOS and Android
+                        li Designed for communicating with others in the local area
+                        li Developed server backend using Node.JS and MongoDB, frontend uses Ionic framework with Apache Cordova and Angular.js
                 
                 .category-row(flex)
                     h4 Skills
