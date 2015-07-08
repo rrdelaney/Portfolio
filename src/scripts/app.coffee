@@ -15,6 +15,7 @@ angular.module 'site', ['ui.router'
     $stateProvider.state 'home',
         url: '/home'
         templateUrl: 'home/home.jade'
+        controller: 'HomeCtrl'
 
     .state 'blog',
         url: '/blog'

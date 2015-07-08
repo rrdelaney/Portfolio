@@ -1,34 +1,37 @@
+mixin letter(display)
+    span.letter.fadeIn(ng-class='animationEnabled ? "animated" : ""')= display
+    
+mixin line(display)
+    h3.line.fadeInUp(ng-class='animationEnabled ? "animated" : ""')= display
+    
+mixin fab(icon, text)
+    md-button.md-fab.fadeIn(ui-sref=sref ng-class='animationEnabled ? "animated" : ""')&attributes(attributes)
+        md-icon.fa.fa-2x(md-font-icon=icon)
+        md-tooltip= text
+    
 .home
     .main
         .name
             .word
-                span.letter.animated.fadeIn R
-                span.letter.animated.fadeIn Y
-                span.letter.animated.fadeIn A
-                span.letter.animated.fadeIn N
+                +letter('R')
+                +letter('Y')
+                +letter('A')
+                +letter('N')
             .word
-                span.letter.animated.fadeIn D
-                span.letter.animated.fadeIn E
-                span.letter.animated.fadeIn L
-                span.letter.animated.fadeIn A
-                span.letter.animated.fadeIn N
-                span.letter.animated.fadeIn E
-                span.letter.animated.fadeIn Y
+                +letter('D')
+                +letter('E')
+                +letter('L')
+                +letter('A')
+                +letter('N')
+                +letter('E')
+                +letter('Y')
             
         .description
-            h3.line.animated.fadeInUp SOFTWARE ENGINEER
-            h3.line.animated.fadeInUp WEB DEVELOPER
-            h3.line.animated.fadeInUp SLEEP DEPRIVED
+            +line('SOFTWARE ENGINEER')
+            +line('WEB DEVELOPER')
+            +line('SLEEP DEPRIVED')
             
     .buttons
-        md-button.md-fab.animated.fadeIn(ui-sref='resume')
-            md-icon.fa.fa-2x(md-font-icon='fa-file-text')
-            md-tooltip Resume
-
-        md-button.md-fab.animated.fadeIn(ui-sref='blog')
-            md-icon.fa.fa-2x(md-font-icon='fa-pencil')
-            md-tooltip Blog
-            
-        md-button.md-fab.animated.fadeIn(href='https://github.com/rrdelaney')
-            md-icon.fa.fa-2x(md-font-icon='fa-github')
-            md-tooltip Github
+        +fab('fa-file-text', 'Resume')(ui-sref='resume')
+        +fab('fa-pencil', 'Blog')(ui-sref='blog')
+        +fab('fa-github', 'Github')(href='https://github.com/rrdelaney')
