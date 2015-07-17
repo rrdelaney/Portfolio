@@ -5,6 +5,7 @@ module.exports = (grunt) ->
 
     grunt.initConfig
         pkg: grunt.file.readJSON 'package.json'
+        package_target: 'target/index.html'
         src_dir: 'src'
         target_dir: 'target/public_html'
         resrc_dir: 'resources'
@@ -144,6 +145,10 @@ module.exports = (grunt) ->
                     }
                 ]
 
+            cname:
+                src: 'CNAME'
+                dest: 'target/CNAME'
+
         imagemin:
             dist:
                 files: [
@@ -156,12 +161,13 @@ module.exports = (grunt) ->
                 ]
 
         clean:
-            dist: ['<%= target_dir %>/*']
+            dist: ['<%= target_dir %>*']
+            all: ['target']
 
         inline:
             dist:
                 src: 'target/public_html/index.html'
-                dest: 'index.html'
+                dest: '<%= package_target %>'
                 options:
                     tag: ''
 
@@ -227,21 +233,21 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-gitinfo'
     grunt.loadNpmTasks 'grunt-inline'
 
-    grunt.registerTask 'debug:prepare', ['gitinfo', 'clean', 'browserify:libs', 'stylus:libs']
+    grunt.registerTask 'debug:prepare', ['gitinfo', 'clean:all', 'browserify:libs', 'stylus:libs']
     grunt.registerTask 'debug:build', ['browserify:debug', 'jade:debug', 'stylus:debug']
     grunt.registerTask 'debug:stage', ['copy:resrc', 'copy:fonts']
     grunt.registerTask 'debug', ['debug:prepare', 'debug:build', 'debug:stage']
     grunt.registerTask 'livereload', ['debug', 'connect:debug', 'watch']
 
-    grunt.registerTask 'dist:prepare', ['gitinfo',  'clean', 'coffeelint']
+    grunt.registerTask 'dist:prepare', ['gitinfo',  'clean:all', 'coffeelint']
     grunt.registerTask 'dist:build', ['browserify:dist', 'stylus:dist', 'jade:dist']
     grunt.registerTask 'dist:stage', ['uglify', 'cssmin', 'imagemin', 'copy:dist', 'copy:fonts']
     grunt.registerTask 'dist', ['dist:prepare', 'dist:build', 'dist:stage']
     grunt.registerTask 'serve', ['dist', 'connect:dist']
 
-    grunt.registerTask 'package:prepare', ['clean']
+    grunt.registerTask 'package:prepare', ['clean:all']
     grunt.registerTask 'package:build', ['dist']
-    grunt.registerTask 'package:stage', ['cssUrlEmbed', 'inline']
+    grunt.registerTask 'package:stage', ['cssUrlEmbed', 'inline', 'copy:cname', 'clean:dist']
     grunt.registerTask 'package', ['package:prepare', 'package:build', 'package:stage']
 
     grunt.registerTask 'default', ['dist']
