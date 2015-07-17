@@ -17,6 +17,3 @@ install:
 
 script:
     - grunt package
-
-after_success:
-    - sh script/deploy.sh
