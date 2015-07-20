@@ -1,9 +1,11 @@
 {
-    "js_dependencies": [
-        "./bower_components/angular-ui-router/release/angular-ui-router.js:angular-ui-router",
-        "./bower_components/angular-animate/angular-animate.js:angular-animate",
-        "./bower_components/angular-aria/angular-aria.js:angular-aria",
-        "./bower_components/angular-material/angular-material.js:angular-material",
-        "./bower_components/angular-template-tag/angular-template-tag.js:angular-template-tag"
-    ]
+    "dependencies": {
+        "js": [
+            "./bower_components/angular-ui-router/release/angular-ui-router.js:angular-ui-router",
+            "./bower_components/angular-animate/angular-animate.js:angular-animate",
+            "./bower_components/angular-aria/angular-aria.js:angular-aria",
+            "./bower_components/angular-material/angular-material.js:angular-material",
+            "./bower_components/angular-template-tag/angular-template-tag.js:angular-template-tag"
+        ]
+    }
 }

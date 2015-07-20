@@ -12,9 +12,10 @@ angular.module 'site', ['ui.router'
                         'site.controllers']
 
 .config ($stateProvider, $urlRouterProvider) ->
-    $stateProvider.state 'home',
+    $stateProvider
+    .state 'home',
         url: '/home'
-        templateUrl: 'home/home.jade'
+        templateUrl: 'home/home'
         controller: 'HomeCtrl'
 
     .state 'blog',
@@ -23,11 +24,6 @@ angular.module 'site', ['ui.router'
 
     .state 'resume',
         url: '/resume'
-        templateUrl: 'resume/resume.jade'
+        templateUrl: 'resume/resume'
 
     $urlRouterProvider.otherwise 'home'
-
-#.config ($mdThemingProvider) ->
-#    $mdThemingProvider.theme 'default'
-#    .primaryPalette 'indigo'
-#    .accentPalette 'teal'

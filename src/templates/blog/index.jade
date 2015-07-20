@@ -1,0 +1,6 @@
+template(url='blog/blog')
+    include blog
+
+template.blog-post&attributes(require('./src/templates/blog/posts/first-blog-post'))
+    include:markdown posts/first-blog-post.md
+    

@@ -5,12 +5,15 @@ module.exports = (grunt) ->
 
     grunt.initConfig
         pkg: grunt.file.readJSON 'package.json'
-        package_target: 'target/index.html'
-        src_dir: 'src'
-        target_dir: 'target/public_html'
-        resrc_dir: 'resources'
-        img_dir: 'img'
         gitinfo: {}
+        js_dependencies: config.dependencies.js
+        ftp_auth: config.auth?.ftp
+
+        src_dir: config.path?.src ? 'src'
+        target_dir: config.path?.target ? 'target/public_html'
+        package_target: config.path?.package ? 'target/index.html'
+        resrc_dir: config.path?.resrc ? 'resources'
+        img_dir: config.path?.img ? 'img'
 
         browserify:
             dist:
@@ -26,7 +29,7 @@ module.exports = (grunt) ->
                     '<%= target_dir %>/app.js': ['<%= src_dir %>/scripts/app.coffee']
                 options:
                     transform: ['coffeeify', 'browserify-shim']
-                    external: config.js_dependencies
+                    external: '<%= js_dependencies %>'
                     browserifyOptions:
                         extensions: ['.coffee']
                         debug: yes
@@ -36,7 +39,7 @@ module.exports = (grunt) ->
                 src: []
                 options:
                     transform: ['browserify-shim']
-                    require: config.js_dependencies
+                    require: '<%= js_dependencies %>'
                     browserifyOptions:
                         debug: yes
 
@@ -89,6 +92,7 @@ module.exports = (grunt) ->
                         debug: no
                         version: '<%= pkg.version %>'
                         build: '<%= gitinfo.local.branch.current.shortSHA %>'
+                        require: require
 
             debug:
                 files:
@@ -98,6 +102,7 @@ module.exports = (grunt) ->
                         debug: yes
                         version: '<%= pkg.version %>'
                         build: '<%= gitinfo.local.branch.current.shortSHA %>'
+                        require: require
 
         uglify:
             dist:
@@ -212,8 +217,7 @@ module.exports = (grunt) ->
 
         'ftp-deploy':
             target:
-                auth: config.ftp_auth
-
+                auth: '<%= ftp_auth %>'
                 src: '<%= src_dir %>/public_html'
                 dest: 'public_html'
 
