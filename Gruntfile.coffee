@@ -92,7 +92,7 @@ module.exports = (grunt) ->
                         debug: no
                         version: '<%= pkg.version %>'
                         build: '<%= gitinfo.local.branch.current.shortSHA %>'
-                        require: require
+                        require:  require
 
             debug:
                 files:
@@ -171,15 +171,15 @@ module.exports = (grunt) ->
 
         inline:
             dist:
-                src: 'target/public_html/index.html'
+                src: '<%= target_dir %>/index.html'
                 dest: '<%= package_target %>'
                 options:
                     tag: ''
 
         cssUrlEmbed:
             dist:
-                src: 'target/public_html/app.css'
-                dest: 'target/public_html/app.css'
+                src: '<%= target_dir %>/app.css'
+                dest: '<%= target_dir %>/app.css'
                 options:
                     failOnMissingUrl: no
 
@@ -218,8 +218,13 @@ module.exports = (grunt) ->
         'ftp-deploy':
             target:
                 auth: '<%= ftp_auth %>'
-                src: '<%= src_dir %>/public_html'
+                src: '<%= target_dir %>/public_html'
                 dest: 'public_html'
+
+        surge:
+            target:
+                project: 'target/'
+                domain: 'ryandelaney.io'
 
     grunt.loadNpmTasks 'grunt-browserify'
     grunt.loadNpmTasks 'grunt-coffeelint'
@@ -236,6 +241,7 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-ftp-deploy'
     grunt.loadNpmTasks 'grunt-gitinfo'
     grunt.loadNpmTasks 'grunt-inline'
+    grunt.loadNpmTasks 'grunt-surge'
 
     grunt.registerTask 'debug:prepare', ['gitinfo', 'clean:all', 'browserify:libs', 'stylus:libs']
     grunt.registerTask 'debug:build', ['browserify:debug', 'jade:debug', 'stylus:debug']
@@ -253,6 +259,10 @@ module.exports = (grunt) ->
     grunt.registerTask 'package:build', ['dist']
     grunt.registerTask 'package:stage', ['cssUrlEmbed', 'inline', 'copy:cname', 'clean:dist']
     grunt.registerTask 'package', ['package:prepare', 'package:build', 'package:stage']
+
+    grunt.registerTask 'deploy:ftp', ['ftp-deploy']
+    grunt.registerTask 'deploy:surge', ['surge']
+    grunt.registerTask 'deploy', [config.deploy]
 
     grunt.registerTask 'default', ['dist']
 

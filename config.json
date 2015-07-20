@@ -1,4 +1,5 @@
 {
+    "deploy": "deploy:surge",
     "dependencies": {
         "js": [
             "./bower_components/angular-ui-router/release/angular-ui-router.js:angular-ui-router",
