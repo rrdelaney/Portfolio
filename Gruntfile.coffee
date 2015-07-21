@@ -221,11 +221,6 @@ module.exports = (grunt) ->
                 src: '<%= target_dir %>/public_html'
                 dest: 'public_html'
 
-        surge:
-            target:
-                project: 'target/'
-                domain: 'ryandelaney.io'
-
     grunt.loadNpmTasks 'grunt-browserify'
     grunt.loadNpmTasks 'grunt-coffeelint'
     grunt.loadNpmTasks 'grunt-contrib-jade'
@@ -241,7 +236,6 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-ftp-deploy'
     grunt.loadNpmTasks 'grunt-gitinfo'
     grunt.loadNpmTasks 'grunt-inline'
-    grunt.loadNpmTasks 'grunt-surge'
 
     grunt.registerTask 'debug:prepare', ['gitinfo', 'clean:all', 'browserify:libs', 'stylus:libs']
     grunt.registerTask 'debug:build', ['browserify:debug', 'jade:debug', 'stylus:debug']
@@ -261,8 +255,6 @@ module.exports = (grunt) ->
     grunt.registerTask 'package', ['package:prepare', 'package:build', 'package:stage']
 
     grunt.registerTask 'deploy:ftp', ['ftp-deploy']
-    grunt.registerTask 'deploy:surge', ['surge']
-    grunt.registerTask 'deploy', [config.deploy]
 
     grunt.registerTask 'default', ['dist']
 

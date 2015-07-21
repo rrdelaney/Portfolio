@@ -3,6 +3,10 @@ language: node_js
 node_js:
     - stable
 
+branches:
+    only:
+        - develop
+
 sudo: false
 
 before_install:
@@ -16,4 +20,4 @@ script:
     - grunt package
 
 after_success:
-    - grunt deploy
+    - sh script/deploy
