@@ -11,7 +11,7 @@ module.exports = (grunt) ->
 
         src_dir: config.path?.src ? 'src'
         target_dir: config.path?.target ? 'target/public_html'
-        package_target: config.path?.package ? 'target/index.html'
+        package_target: config.path?.package ? 'index.html'
         resrc_dir: config.path?.resrc ? 'resources'
         img_dir: config.path?.img ? 'img'
 
