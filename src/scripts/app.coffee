@@ -4,11 +4,13 @@ require 'angular-animate'
 require 'angular-aria'
 require 'angular-material'
 require 'angular-template-tag'
+require './services'
 require './controllers'
 
 angular.module 'site', ['ui.router'
                         'templateTag'
                         'ngMaterial'
+                        'site.services'
                         'site.controllers']
 
 .config ($stateProvider, $urlRouterProvider) ->
