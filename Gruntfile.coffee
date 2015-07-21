@@ -92,17 +92,16 @@ module.exports = (grunt) ->
                         debug: no
                         version: '<%= pkg.version %>'
                         build: '<%= gitinfo.local.branch.current.shortSHA %>'
-                        require:  require
 
             debug:
                 files:
                     '<%= target_dir %>/index.html': '<%= src_dir %>/templates/app.jade'
                 options:
+                    pretty: yes
                     data:
                         debug: yes
                         version: '<%= pkg.version %>'
                         build: '<%= gitinfo.local.branch.current.shortSHA %>'
-                        require: require
 
         uglify:
             dist:
@@ -117,6 +116,14 @@ module.exports = (grunt) ->
                     '<%= target_dir %>/app.css': ['<%= target_dir %>/app.css']
                 options:
                     keepSpecialComments: 0
+
+        htmlmin:
+            dist:
+                files:
+                    '<%= target_dir %>/index.html': '<%= target_dir %>/index.html'
+                options:
+                    removeComments: yes
+                    collapseWhitespace: yes
 
         copy:
             resrc:
@@ -197,7 +204,7 @@ module.exports = (grunt) ->
 
         watch:
             jade:
-                files: ['<%= src_dir %>/templates/**/*.jade']
+                files: ['<%= src_dir %>/templates/**']
                 tasks: ['gitinfo', 'jade:debug']
 
             stylus:
@@ -231,6 +238,7 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-contrib-clean'
     grunt.loadNpmTasks 'grunt-contrib-connect'
     grunt.loadNpmTasks 'grunt-contrib-imagemin'
+    grunt.loadNpmTasks 'grunt-contrib-htmlmin'
     grunt.loadNpmTasks 'grunt-contrib-watch'
     grunt.loadNpmTasks 'grunt-css-url-embed'
     grunt.loadNpmTasks 'grunt-ftp-deploy'
@@ -245,7 +253,7 @@ module.exports = (grunt) ->
 
     grunt.registerTask 'dist:prepare', ['gitinfo',  'clean:all', 'coffeelint']
     grunt.registerTask 'dist:build', ['browserify:dist', 'stylus:dist', 'jade:dist']
-    grunt.registerTask 'dist:stage', ['uglify', 'cssmin', 'imagemin', 'copy:dist', 'copy:fonts']
+    grunt.registerTask 'dist:stage', ['uglify', 'cssmin', 'htmlmin', 'imagemin', 'copy:dist', 'copy:fonts']
     grunt.registerTask 'dist', ['dist:prepare', 'dist:build', 'dist:stage']
     grunt.registerTask 'serve', ['dist', 'connect:dist']
 

@@ -1,8 +1,6 @@
 template(url='blog/blog')
     include blog
 
-- var a = require('./src/templates/blog/posts/first-blog-post')
-
-template.blog-post&attributes(a)
+template.blog-post
     include:markdown ./posts/first-blog-post.md
     
