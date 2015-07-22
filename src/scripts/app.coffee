@@ -33,5 +33,5 @@ angular.module 'site', ['ui.router'
 
 .config ($mdThemingProvider) ->
    $mdThemingProvider.theme 'default'
-   .primaryPalette 'indigo'
-   .accentPalette 'teal'
+   .primaryPalette 'teal'
+   .accentPalette 'deep-purple'
