@@ -1,6 +1,7 @@
 {
     "dependencies": {
         "js": [
+            "./bower_components/angular/angular.js:angular",
             "./bower_components/angular-ui-router/release/angular-ui-router.js:angular-ui-router",
             "./bower_components/angular-animate/angular-animate.js:angular-animate",
             "./bower_components/angular-aria/angular-aria.js:angular-aria",
