@@ -1,0 +1,4 @@
+.blog
+    .blog-posts(ng-repeat='post in blogPosts')
+        md-card
+            md-card-content(ng-bind-html='post.content')

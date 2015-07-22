@@ -1,16 +1,16 @@
 angular = require 'angular'
 
 angular.module 'site.services'
-.service 'blogPostLoader', ->
-    @loadPosts = ->
-        blogPostTemplates = (angular.element(node.content) for node in document.querySelectorAll 'template.blog-post')
-
-        for post in blogPostTemplates
+.service 'BlogPostLoader', ($sce) ->
+    @loadPosts = (query) ->
+        for post in document.querySelectorAll query
+            element = angular.element(post.content)
             metadata = {}
-            for attr in post[0].firstChild.attributes
+            for attr in element[0].firstChild.attributes
                 metadata[attr.name] = attr.value
 
-            content: post[0]
+            console.log post.innerHTML
+            content: $sce.trustAsHtml post.innerHTML
             metadata: metadata
 
     return

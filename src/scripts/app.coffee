@@ -22,10 +22,16 @@ angular.module 'site', ['ui.router'
 
     .state 'blog',
         url: '/blog'
-        template: '<p>Future Blog!</p>'
+        templateUrl: 'blog/blog'
+        controller: 'BlogCtrl'
 
     .state 'resume',
         url: '/resume'
         templateUrl: 'resume/resume'
 
     $urlRouterProvider.otherwise 'home'
+
+.config ($mdThemingProvider) ->
+   $mdThemingProvider.theme 'default'
+   .primaryPalette 'indigo'
+   .accentPalette 'teal'
