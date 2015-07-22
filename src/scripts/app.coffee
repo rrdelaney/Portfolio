@@ -17,17 +17,17 @@ angular.module 'site', ['ui.router'
     $stateProvider
     .state 'home',
         url: '/home'
-        templateUrl: 'home/home'
+        templateUrl: 'home/home.html'
         controller: 'HomeCtrl'
 
     .state 'blog',
         url: '/blog'
-        templateUrl: 'blog/blog'
+        templateUrl: 'blog/blog.html'
         controller: 'BlogCtrl'
 
     .state 'resume',
         url: '/resume'
-        templateUrl: 'resume/resume'
+        templateUrl: 'resume/resume.html'
 
     $urlRouterProvider.otherwise 'home'
 

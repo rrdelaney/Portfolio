@@ -15,6 +15,7 @@ html
     body(ng-app='site')
         div.view(ui-view)
             
-    include ./home/index
-    include ./resume/index
-    include ./blog/index
+    if package
+        include ./home/index
+        include ./resume/index
+        include ./blog/index

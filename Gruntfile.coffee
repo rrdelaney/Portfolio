@@ -90,16 +90,25 @@ module.exports = (grunt) ->
                 options:
                     data:
                         debug: no
+                        package: yes
                         version: '<%= pkg.version %>'
                         build: '<%= gitinfo.local.branch.current.shortSHA %>'
 
             debug:
-                files:
-                    '<%= target_dir %>/index.html': '<%= src_dir %>/templates/app.jade'
+                files: [
+                    {
+                        expand: yes
+                        cwd: '<%= src_dir %>/templates/'
+                        src: ['**/*.jade', '!**/index.jade']
+                        ext: '.html'
+                        dest: '<%= target_dir %>/'
+                    }
+                ]
                 options:
                     pretty: yes
                     data:
                         debug: yes
+                        package: no
                         version: '<%= pkg.version %>'
                         build: '<%= gitinfo.local.branch.current.shortSHA %>'
 
@@ -255,7 +264,7 @@ module.exports = (grunt) ->
     grunt.registerTask 'dist:build', ['browserify:dist', 'stylus:dist', 'jade:dist']
     grunt.registerTask 'dist:stage', ['uglify', 'cssmin', 'htmlmin', 'imagemin', 'copy:dist', 'copy:fonts']
     grunt.registerTask 'dist', ['dist:prepare', 'dist:build', 'dist:stage']
-    grunt.registerTask 'serve', ['dist', 'connect:dist']
+    grunt.registerTask 'serve', ['debug', 'connect:dist']
 
     grunt.registerTask 'package:prepare', ['clean:all']
     grunt.registerTask 'package:build', ['dist']
