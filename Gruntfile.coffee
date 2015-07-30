@@ -83,6 +83,9 @@ module.exports = (grunt) ->
                     sourcemap:
                         inline: yes
 
+        stylint:
+            src: ['<%= src_dir %>/styles/**/*.styl']
+
         jade:
             dist:
                 files:
@@ -253,6 +256,7 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-ftp-deploy'
     grunt.loadNpmTasks 'grunt-gitinfo'
     grunt.loadNpmTasks 'grunt-inline'
+    grunt.loadNpmTasks 'grunt-stylint'
 
     grunt.registerTask 'debug:prepare', ['gitinfo', 'clean:all', 'browserify:libs', 'stylus:libs']
     grunt.registerTask 'debug:build', ['browserify:debug', 'jade:debug', 'stylus:debug']
@@ -260,7 +264,7 @@ module.exports = (grunt) ->
     grunt.registerTask 'debug', ['debug:prepare', 'debug:build', 'debug:stage']
     grunt.registerTask 'livereload', ['debug', 'connect:debug', 'watch']
 
-    grunt.registerTask 'dist:prepare', ['gitinfo',  'clean:all', 'coffeelint']
+    grunt.registerTask 'dist:prepare', ['gitinfo',  'clean:all', 'coffeelint', 'stylint']
     grunt.registerTask 'dist:build', ['browserify:dist', 'stylus:dist', 'jade:dist']
     grunt.registerTask 'dist:stage', ['uglify', 'cssmin', 'htmlmin', 'imagemin', 'copy:dist', 'copy:fonts']
     grunt.registerTask 'dist', ['dist:prepare', 'dist:build', 'dist:stage']
