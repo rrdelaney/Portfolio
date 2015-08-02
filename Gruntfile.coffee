@@ -10,7 +10,7 @@ module.exports = (grunt) ->
         ftp_auth: config.auth?.ftp
 
         src_dir: config.path?.src ? 'src'
-        target_dir: config.path?.target ? 'target/public_html'
+        target_dir: config.path?.target ? 'target'
         package_target: config.path?.package ? 'target/index.html'
         resrc_dir: config.path?.resrc ? 'resources'
         img_dir: config.path?.img ? 'img'
@@ -237,7 +237,7 @@ module.exports = (grunt) ->
         'ftp-deploy':
             target:
                 auth: '<%= ftp_auth %>'
-                src: '<%= target_dir %>/public_html'
+                src: '<%= target_dir %>'
                 dest: 'public_html'
 
     grunt.loadNpmTasks 'grunt-browserify'

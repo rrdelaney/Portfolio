@@ -1,7 +1,7 @@
-template.blog-post
-    include:markdown ./posts/first-blog-post.md
+template.blog-post: include:markdown ./posts/first-blog-post.md
 
 .blog
-    .blog-posts(ng-repeat='post in blogPosts')
+    .container-fluid.blog-posts(ng-repeat='post in blogPosts')
         md-card
+            h2(ng-bind-html='post.tags')
             md-card-content(ng-bind-html='post.content')
