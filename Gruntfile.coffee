@@ -188,12 +188,13 @@ module.exports = (grunt) ->
             dist: ['<%= target_dir %>*']
             all: ['target']
 
-        inline:
-            dist:
-                src: '<%= target_dir %>/index.html'
-                dest: '<%= package_target %>'
+        vulcanize:
+            package:
+                files:
+                    '<%= package_target %>': '<%= target_dir %>/index.html'
                 options:
-                    tag: ''
+                    inlineScripts: yes
+                    inlineCss: yes
 
         cssUrlEmbed:
             dist:
@@ -255,8 +256,8 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-css-url-embed'
     grunt.loadNpmTasks 'grunt-ftp-deploy'
     grunt.loadNpmTasks 'grunt-gitinfo'
-    grunt.loadNpmTasks 'grunt-inline'
     grunt.loadNpmTasks 'grunt-stylint'
+    grunt.loadNpmTasks 'grunt-vulcanize'
 
     grunt.registerTask 'debug:prepare', ['gitinfo', 'clean:all', 'browserify:libs', 'stylus:libs']
     grunt.registerTask 'debug:build', ['browserify:debug', 'jade:debug', 'stylus:debug']
@@ -272,7 +273,7 @@ module.exports = (grunt) ->
 
     grunt.registerTask 'package:prepare', ['clean:all']
     grunt.registerTask 'package:build', ['dist']
-    grunt.registerTask 'package:stage', ['cssUrlEmbed', 'inline', 'copy:cname', 'clean:dist']
+    grunt.registerTask 'package:stage', ['cssUrlEmbed', 'vulcanize', 'copy:cname', 'clean:dist']
     grunt.registerTask 'package', ['package:prepare', 'package:build', 'package:stage']
 
     grunt.registerTask 'deploy:ftp', ['ftp-deploy']

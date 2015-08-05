@@ -24,9 +24,9 @@
     "grunt-css-url-embed": "^1.6.0",
     "grunt-ftp-deploy": "^0.1.10",
     "grunt-gitinfo": "^0.1.7",
-    "grunt-inline": "^0.3.4",
     "grunt-notify": "^0.4.1",
     "grunt-stylint": "^0.1.1",
+    "grunt-vulcanize": "^1.0.0",
     "marked": "^0.3.3",
     "time-grunt": "^1.1.1"
   },
