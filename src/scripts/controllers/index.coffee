@@ -1,6 +1,5 @@
 angular = require 'angular'
-
-angular.module 'site.controllers', []
-
 require './home'
 require './blog'
+
+angular.module 'site.controllers', ['site.controllers.home']

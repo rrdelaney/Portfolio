@@ -31,7 +31,10 @@ angular.module 'site', ['ui.router'
 
     $urlRouterProvider.otherwise 'home'
 
-.config ($mdThemingProvider) ->
+.config ($mdThemingProvider, $mdIconProvider) ->
    $mdThemingProvider.theme 'default'
    .primaryPalette 'teal'
    .accentPalette 'deep-purple'
+
+   $mdIconProvider
+   .defaultFontSet 'fa'

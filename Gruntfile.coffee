@@ -140,33 +140,27 @@ module.exports = (grunt) ->
         copy:
             resrc:
                 files: [
-                    {
-                        expand: yes
-                        cwd: '<%= resrc_dir %>'
-                        src: ['**']
-                        dest: '<%= target_dir %>/'
-                    }
+                    expand: yes
+                    cwd: '<%= resrc_dir %>'
+                    src: ['**']
+                    dest: '<%= target_dir %>/'
                 ]
 
             dist:
                 files: [
-                    {
-                        expand: yes
-                        cwd: '<%= resrc_dir %>'
-                        src: ['**', '!<%= img_dir %>/**']
-                        dest: '<%= target_dir %>/'
-                    }
+                    expand: yes
+                    cwd: '<%= resrc_dir %>'
+                    src: ['**', '!<%= img_dir %>/**']
+                    dest: '<%= target_dir %>/'
                 ]
 
 
             fonts:
                 files: [
-                    {
-                        expand: yes
-                        cwd: 'bower_components/font-awesome-stylus'
-                        src: ['fonts/**']
-                        dest: '<%= target_dir %>/'
-                    }
+                    expand: yes
+                    cwd: 'bower_components/font-awesome'
+                    src: ['fonts/**']
+                    dest: '<%= target_dir %>/'
                 ]
 
             cname:

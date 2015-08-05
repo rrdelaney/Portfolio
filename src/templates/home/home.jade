@@ -8,7 +8,7 @@ mixin fab(icon, text)
     md-button.md-fab.fadeIn(ui-sref=sref ng-class='animationEnabled ? "animated" : ""')&attributes(attributes)
         md-icon.fa.fa-2x(md-font-icon=icon)
         md-tooltip= text
-
+        
 .home
     .main
         .name
@@ -35,3 +35,23 @@ mixin fab(icon, text)
         +fab('fa-file-text', 'Resume')(ui-sref='resume')
         +fab('fa-pencil', 'Blog')(ui-sref='blog')
         +fab('fa-github', 'Github')(href='https://github.com/rrdelaney')
+        
+    md-button.md-icon-button.md-primary.sidenav-button(md-ripple-size='partial' ng-click='toggleSidenav()')
+        md-icon.fa(md-font-icon='fa-bars')
+            
+    md-sidenav.md-sidenav-right(md-component-id='right')
+        md-grid-list(md-cols-sm='1', md-cols-md='2', md-cols-gt-md='6', md-row-height-gt-md='1:1', md-row-height='2:2', md-gutter='12px', md-gutter-gt-sm='8px')
+            md-grid-tile.md-primary(md-rowspan='2', md-colspan='2' md-colspan-sm='1')
+                i.fa.fa-5x.fa-inverse.fa-user
+                md-grid-tile-footer
+                    h3.md-headline About Me
+                    
+            md-grid-tile
+                i.fa.fa-3x.fa-inverse.fa-terminal
+                md-grid-tile-footer
+                    h3.md-headline Projects
+                    
+            md-grid-tile
+                i.fa.fa-3x.fa-inverse.fa-circle-thin
+                md-grid-tile-footer
+                    h3.md-headline Things
