@@ -86,6 +86,11 @@ module.exports = (grunt) ->
         stylint:
             src: ['<%= src_dir %>/styles/**/*.styl']
 
+        jadelint:
+            src: ['<%= src_dir %>/templates/**/*.jade']
+            options:
+                configFile: no
+
         jade:
             dist:
                 files:
@@ -251,6 +256,7 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-ftp-deploy'
     grunt.loadNpmTasks 'grunt-gitinfo'
     grunt.loadNpmTasks 'grunt-stylint'
+    grunt.loadNpmTasks 'grunt-jadelint'
     grunt.loadNpmTasks 'grunt-vulcanize'
 
     grunt.registerTask 'debug:prepare', ['gitinfo', 'clean:all', 'browserify:libs', 'stylus:libs']
