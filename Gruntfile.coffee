@@ -43,14 +43,6 @@ module.exports = (grunt) ->
                     browserifyOptions:
                         debug: yes
 
-        coffeelint:
-            dist: ['<%= src_dir %>/scripts/**/*.coffee']
-            options:
-                max_line_length:
-                    level: 'ignore'
-                indentation:
-                    level: 'ignore'
-
         stylus:
             dist:
                 files:
@@ -82,6 +74,14 @@ module.exports = (grunt) ->
                     'include css': yes
                     sourcemap:
                         inline: yes
+
+        coffeelint:
+            src: ['<%= src_dir %>/scripts/**/*.coffee']
+            options:
+                max_line_length:
+                    level: 'ignore'
+                indentation:
+                    level: 'ignore'
 
         stylint:
             src: ['<%= src_dir %>/styles/**/*.styl']
@@ -265,7 +265,7 @@ module.exports = (grunt) ->
     grunt.registerTask 'debug', ['debug:prepare', 'debug:build', 'debug:stage']
     grunt.registerTask 'livereload', ['debug', 'connect:debug', 'watch']
 
-    grunt.registerTask 'dist:prepare', ['gitinfo',  'clean:all', 'coffeelint', 'stylint']
+    grunt.registerTask 'dist:prepare', ['gitinfo',  'clean:all', 'coffeelint', 'stylint', 'jadelint']
     grunt.registerTask 'dist:build', ['browserify:dist', 'stylus:dist', 'jade:dist']
     grunt.registerTask 'dist:stage', ['uglify', 'cssmin', 'htmlmin', 'imagemin', 'copy:dist', 'copy:fonts']
     grunt.registerTask 'dist', ['dist:prepare', 'dist:build', 'dist:stage']
