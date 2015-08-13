@@ -17,7 +17,7 @@ install:
     - bower install
 
 script:
-    - grunt
+    - grunt package
 
 after_success:
     - sh script/deploy
