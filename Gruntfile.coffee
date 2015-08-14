@@ -184,8 +184,8 @@ module.exports = (grunt) ->
                 ]
 
         clean:
-            dist: ['<%= target_dir %>*']
-            all: ['target']
+            dist: ['<%= target_dir %>/*', '!<%= target_dir %>/index.html', '!<%= target_dir %>/CNAME']
+            all: ['<%= target_dir %>']
 
         vulcanize:
             package:
