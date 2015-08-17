@@ -1,11 +1,54 @@
 <meta
-    title="My first blog post"
-    date="7/19/2015"
-    tags="first,blog,post"
-    img="http://www.listnerd.com/cache/7ff12917aace1bb6f2d90a52ba1123bd_w1000_h250.jpg"
+    title="Deploying to NPM with TravisCI"
+    date="8/17/2015"
+    tags="npm,deploy,travis"
+    img="/img/blog/npm-deploy-screenshot.png"
 >
 
-## I can't
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+### Introduction
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+I've been writing a linter for the Jade templating language called
+[Jadelint](https://github.com/rrdelaney/jadelint), and over the course of a few
+short weeks I've had a little more than a dozen feature requests. To keep up
+with the building of the project, I've been using TravisCI for builds and
+updating the [documentation](http://rdel.io/jadelint). Until recently, I've been
+deploying to NPM myself due to a laziness to tag my git commits on releases.
+I figured out a script to automate this deployment though, and publish my build
+targets to NPM on a version update in `package.json`.
+
+### Tracking Version Updates
+
+To tell when the version is changed, you need to compare the local version and
+the version on the NPM registry. Getting the local version can be done with a
+simple
+
+```bash
+node -p "require('./package.json').version"
+```
+
+Using `node -p "..."` will evaluate the script in the quotes and print the
+result. Requiring the version info is a simple step from there. Next, getting
+the NPM info can be done with
+
+```bash
+npm view $PACKAGE_NAME dist-tags.latest
+```
+
+This prints the latest version known on NPM.
+
+### The Travis File
+
+You can specify a custom condition in your `.travis.yml` for deployment, and
+putting the two previous commands together, you end up with
+
+```yaml
+deploy:
+    provider: npm
+    email: ...
+    api_key: ...
+    skip_cleanup: true
+    on:
+        branch: master
+        condition: $(npm view jadelint dist-tags.latest) != \
+                   $(node -p "require('./package.json').version")
+```
