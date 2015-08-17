@@ -1,11 +1,11 @@
 template.blog-post: include:markdown ./posts/first-blog-post.md
 
-.blog(style='background-image:url({{backgroundURI}})')
+.blog(ng-style='backgroundStyle')
     md-content.md-padding.blog-posts(ng-repeat='post in blogPosts')
         md-card
-            img.md-card-image.blog-post-image(ng-if='post.metadata.img' ng-src='{{post.metadata.img}}')
+            img.md-card-image.blog-post-image(ng-if='post.img' ng-src='{{post.img}}')
             md-card-content
-                h1.md-display-2.blog-title {{ post.metadata.title }}
+                h1.md-display-2.blog-title {{ post.title }}
                 div(ng-bind-html='post.content')
                     
             .md-actions(layout='row' layout-align='center')

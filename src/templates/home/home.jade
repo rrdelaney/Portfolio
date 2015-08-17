@@ -37,6 +37,3 @@ mixin button(text)
             .bottom-buttons
                 +button('About').md-accent(ui-sref='home/about')
                 +button('Projects').md-accent(ui-sref='home/projects')
-        
-    md-button.md-icon-button.md-primary.sidenav-button(md-ripple-size='partial' ng-click='toggleSidenav()' ng-show='isSmall()')
-        md-icon.fa(md-font-icon='fa-bars')
