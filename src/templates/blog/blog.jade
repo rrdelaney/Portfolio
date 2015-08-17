@@ -1,6 +1,6 @@
 template.blog-post: include:markdown ./posts/first-blog-post.md
 
-.blog
+.blog(style='background-image:url({{backgroundURI}})')
     md-content.md-padding.blog-posts(ng-repeat='post in blogPosts')
         md-card
             img.md-card-image.blog-post-image(ng-if='post.metadata.img' ng-src='{{post.metadata.img}}')
