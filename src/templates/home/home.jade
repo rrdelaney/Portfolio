@@ -4,30 +4,11 @@ mixin letter(display)
 mixin line(display)
     h3.line.fadeInUp(ng-class='animationEnabled ? "animated" : ""')= display
     
-mixin fab(icon, text)
-    md-button.md-fab.fadeIn(ui-sref=sref ng-class='animationEnabled ? "animated" : ""')&attributes(attributes)
-        md-icon.fa.fa-2x(md-font-icon=icon)
-        md-tooltip= text
+mixin button(text)
+    md-button.md-raised.fadeIn(ui-sref=sref ng-class='animationEnabled ? "animated" : ""')&attributes(attributes)= text
+
         
-mixin sidebar()
-    .sidebar.fadeIn(ui-sref=sref ng-class='animationEnabled ? "animated" : ""')
-        md-grid-list(md-cols-sm='2' md-cols='1' md-row-height-sm='1:1' md-row-height='4:1' md-gutter='12px' md-gutter-gt-sm='8px')
-            md-grid-tile.md-primary
-                i.fa.fa-5x.fa-inverse.fa-user(ng-if='isSmall()')
-                md-grid-tile-footer
-                    h3.md-headline About Me
-                    
-            md-grid-tile
-                i.fa.fa-3x.fa-inverse.fa-terminal(ng-if='isSmall()')
-                md-grid-tile-footer
-                    h3.md-headline Projects
-                    
-            md-grid-tile
-                i.fa.fa-3x.fa-inverse.fa-circle-thin(ng-if='isSmall()')
-                md-grid-tile-footer
-                    h3.md-headline Things
-        
-.home
+.home(style='background-image:url({{backgroundURI}})')
     .main
         .name
             .word
@@ -49,12 +30,13 @@ mixin sidebar()
             +line('WEB DEVELOPER')
             
         .buttons
-            +fab('fa-file-text', 'Resume')(ui-sref='resume')
-            +fab('fa-pencil', 'Blog')(ui-sref='blog')
-            +fab('fa-github', 'Github')(href='https://github.com/rrdelaney')
+            .top-buttons
+                +button('Resume').md-primary(ui-sref='resume')
+                +button('Blog').md-primary(ui-sref='blog')
+                +button('Github').md-primary(href='https://github.com/rrdelaney')
+            .bottom-buttons
+                +button('About').md-accent(ui-sref='home/about')
+                +button('Projects').md-accent(ui-sref='home/projects')
         
     md-button.md-icon-button.md-primary.sidenav-button(md-ripple-size='partial' ng-click='toggleSidenav()' ng-show='isSmall()')
         md-icon.fa(md-font-icon='fa-bars')
-            
-    md-sidenav.md-sidenav-right(md-component-id='right' ng-show='isSmall()')
-        +sidebar()

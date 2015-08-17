@@ -1,13 +1,11 @@
 angular = require 'angular'
+Trianglify = require 'trianglify'
 
 animationEnabled = true
 
-angular.module 'site.controllers.home', ['ngMaterial']
-.controller 'HomeCtrl', ($scope, $mdSidenav, $mdMedia) ->
-    $scope.toggleSidenav = ->
-        $mdSidenav('right').toggle()
-
-    $scope.isSmall = -> $mdMedia 'sm'
+angular.module 'site.controllers.home', ['ngMaterial', 'site.services']
+.controller 'HomeCtrl', ($scope, Background) ->
+    $scope.backgroundURI = Background.generate 'Home'
 
     $scope.animationEnabled = if animationEnabled then 'animated' else ''
 
