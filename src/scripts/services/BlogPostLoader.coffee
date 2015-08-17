@@ -10,6 +10,7 @@ angular.module 'site.services'
                 postData[attr.name] = attr.value
 
             postData.id = index
+            postData.tags = postData.tags.split ','
             postData.content = $sce.trustAsHtml post.innerHTML
 
             postData

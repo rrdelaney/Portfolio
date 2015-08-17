@@ -1,5 +1,6 @@
 .blog
-    height 100vh
+    height 100%
+    min-height 100vh
 
     .blog-posts
         margin 0 auto
@@ -8,3 +9,18 @@
 
         .blog-post-image
             max-height 250px
+
+        .blog-post-content
+            position relative
+
+            .blurred-content
+                max-height 20em
+                overflow hidden
+
+                &::after
+                    content ""
+                    background-image linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%)
+                    bottom 0em
+                    height 8em
+                    position absolute
+                    width 100%

@@ -1,6 +1,6 @@
 angular = require 'angular'
-require './home'
-require './blog'
+require './HomeCtrl'
+require './BlogCtrl'
 
 angular.module 'site.controllers', ['site.controllers.home'
                                     'site.controllers.blog']

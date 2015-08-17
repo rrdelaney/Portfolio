@@ -1,12 +1,13 @@
 template.blog-post: include:markdown ./posts/first-blog-post.md
 
 .blog(ng-style='backgroundStyle')
-    md-content.md-padding.blog-posts(ng-repeat='post in blogPosts')
+    md-content.blog-posts(ng-repeat='post in blogPosts')
         md-card
             img.md-card-image.blog-post-image(ng-if='post.img' ng-src='{{post.img}}')
             md-card-content
-                h1.md-display-2.blog-title {{ post.title }}
-                div(ng-bind-html='post.content')
+                h3.md-display-2.blog-title {{ post.title }}
+                .blog-post-content
+                    div(ng-bind-html='post.content' ng-class='post.revealed ? "" : "blurred-content"')
                     
             .md-actions(layout='row' layout-align='center')
-                md-button(ng-click='revealPost(post.id)') Read More
+                md-button(ng-click='revealPost(post.id)' ng-if='!post.revealed') Read More
