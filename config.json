@@ -8,7 +8,7 @@
             "./bower_components/angular-material/angular-material.js:angular-material",
             "./bower_components/angular-template-tag/angular-template-tag.js:angular-template-tag",
             "./bower_components/trianglify/dist/trianglify.min.js:trianglify",
-            "./bower_components/google-material-color/dist/palette.js:palette"
+            "./bower_components/google-material-color/dist/palette.js:google-material-color/dist/palette"
         ]
     }
 }

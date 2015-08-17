@@ -1,6 +1,6 @@
 angular = require 'angular'
 Trianglify = require 'trianglify'
-palette = require 'palette'
+palette = require 'google-material-color/dist/palette'
 
 angular.module 'site.services'
 .factory 'Background', ->
