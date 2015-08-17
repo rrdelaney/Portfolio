@@ -5,7 +5,8 @@ animationEnabled = true
 
 angular.module 'site.controllers.home', ['ngMaterial', 'site.services']
 .controller 'HomeCtrl', ($scope, Background) ->
-    $scope.backgroundURI = Background.generate 'Home'
+    $scope.backgroundStyle =
+        'background-image': "url(#{Background.generate 'Home'})"
 
     $scope.animationEnabled = if animationEnabled then 'animated' else ''
 

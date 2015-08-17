@@ -8,7 +8,7 @@ mixin button(text)
     md-button.md-raised.fadeIn(ui-sref=sref ng-class='animationEnabled ? "animated" : ""')&attributes(attributes)= text
 
         
-.home(style='background-image:url({{backgroundURI}})')
+.home(ng-style='backgroundStyle')
     .main
         .name
             .word
