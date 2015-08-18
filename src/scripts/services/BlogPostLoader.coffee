@@ -15,4 +15,7 @@ angular.module 'site.services'
 
             postData
 
+    @loadPost = (query, id) ->
+        @loadPosts(query)[id]
+
     return

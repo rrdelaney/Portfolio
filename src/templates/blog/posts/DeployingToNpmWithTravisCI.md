@@ -1,5 +1,6 @@
 <meta
     title="Deploying to NPM with TravisCI"
+    slug="deploying-to-npm-with-travis"
     date="8/17/2015"
     tags="npm,deploy,travis"
     img="/img/blog/npm-deploy-screenshot.png"

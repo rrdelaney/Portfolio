@@ -1,18 +1,4 @@
-template.blog-post: include:markdown ./posts/first-blog-post.md
+template.blog-post: include:markdown ./posts/DeployingToNpmWithTravisCI.md
 
 .blog(ng-style='backgroundStyle')
-    md-input-container.search-bar(md-no-float)
-        md-icon.fa.fa-inverse(md-font-icon='fa-search')
-        input(type='text' placeholder='Search' ng-model='searchQuery' ng-change='filterPosts(searchQuery)')
-            
-    md-content.blog-posts(ng-repeat='post in blogPosts')
-        md-card(ng-if='!post.hidden')
-            .blog-post-image-container
-                img.md-card-image.blog-post-image(ng-if='post.img' ng-src='{{post.img}}')
-            md-card-content
-                h3.md-display-1.blog-title {{ post.title }}
-                .blog-post-content
-                    div(ng-bind-html='post.content' ng-class='post.revealed ? "" : "blurred-content"')
-                    
-            .md-actions(layout='row' layout-align='center')
-                md-button(ng-click='revealPost(post.id)' ng-if='!post.revealed') Read More
+    div(ui-view='')

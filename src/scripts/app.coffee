@@ -15,16 +15,6 @@ angular.module 'site', ['ui.router'
 
 .config ($stateProvider, $urlRouterProvider) ->
     $stateProvider
-    .state 'home',
-        url: '/home'
-        templateUrl: 'home/home.html'
-        controller: 'HomeCtrl'
-
-    .state 'blog',
-        url: '/blog'
-        templateUrl: 'blog/blog.html'
-        controller: 'BlogCtrl'
-
     .state 'resume',
         url: '/resume'
         templateUrl: 'resume/resume.html'

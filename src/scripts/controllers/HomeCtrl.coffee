@@ -15,3 +15,10 @@ angular.module 'site.controllers.home', ['ngMaterial', 'site.services']
         $scope.animationEnabled = ''
         animationEnabled = false
     , 4000
+
+.config ($stateProvider) ->
+    $stateProvider
+    .state 'home',
+        url: '/home'
+        templateUrl: 'home/home.html'
+        controller: 'HomeCtrl'
