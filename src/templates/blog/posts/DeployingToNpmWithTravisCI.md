@@ -3,8 +3,7 @@
     slug="deploying-to-npm-with-travis"
     date="8/17/2015"
     tags="npm,deploy,travis"
-    img="/img/blog/npm-deploy-screenshot.png"
->
+    img="/img/blog/npm-deploy-screenshot.png">
 
 ### Introduction
 
