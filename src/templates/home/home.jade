@@ -1,13 +1,12 @@
 mixin letter(display)
-    span.letter.fadeIn(ng-class='animationEnabled ? "animated" : ""')= display
+    span.letter.fadeIn(ng-class='animationEnabled ? "animated" : ""')&attributes(attributes)= display
     
 mixin line(display)
-    h3.line.fadeInUp(ng-class='animationEnabled ? "animated" : ""')= display
+    h3.line.fadeInUp(ng-class='animationEnabled ? "animated" : ""')&attributes(attributes)= display
     
 mixin button(text)
-    md-button.md-raised.fadeIn(ui-sref=sref ng-class='animationEnabled ? "animated" : ""')&attributes(attributes)= text
+    md-button.button.md-raised.fadeIn(ui-sref=sref ng-class='animationEnabled ? "animated" : ""' ng-style='buttonStyle')&attributes(attributes)= text
 
-        
 .home(ng-style='backgroundStyle')
     .main
         .name

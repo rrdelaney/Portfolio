@@ -11,10 +11,14 @@ angular.module 'site.controllers.home', ['ngMaterial', 'site.services']
 
     $scope.animationEnabled = if animationEnabled then 'animated' else ''
 
-    setTimeout ->
-        $scope.animationEnabled = ''
-        animationEnabled = false
-    , 4000
+    if animationEnabled
+        getButtons().addClass 'button-disabled'
+        getLastLine().addEventListener 'animationend', ->
+            getButtons().removeClass 'button-disabled'
+
+        getLastButton().addEventListener 'animationend', ->
+            $scope.animationEnabled = ''
+            animationEnabled = false
 
 .config ($stateProvider) ->
     $stateProvider
@@ -22,3 +26,14 @@ angular.module 'site.controllers.home', ['ngMaterial', 'site.services']
         url: '/home'
         templateUrl: 'home/home.html'
         controller: 'HomeCtrl'
+        
+getButtons = ->
+    angular.element document.querySelectorAll '.home .main .buttons .button'
+
+getLastButton = ->
+    results = getButtons()
+    results[results.length - 1]
+
+getLastLine = ->
+    results = document.querySelectorAll '.home .main .description .line'
+    results[results.length - 1]
