@@ -7,7 +7,9 @@ md-content.blog-posts(ng-repeat='post in blogPosts')
         .blog-post-image-container
             img.md-card-image.blog-post-image(ng-if='post.img' ng-src='{{post.img}}')
         md-card-content
-            h3.md-display-1.blog-title: a(ui-sref='blog.post({slug:post.slug})') {{ post.title }}
+            h3.md-display-1.blog-title
+                a(ui-sref='blog.post({slug:post.slug})') {{ post.title }}
+                p.md-caption #[strong Ryan Delaney] {{ post.date | date:'mediumDate' }}
             .blog-post-content
                 div(ng-bind-html='post.content' ng-class='post.revealed ? "" : "blurred-content"')
                 

@@ -3,6 +3,8 @@ md-content.blog-posts
         .blog-post-image-container
             img.md-card-image.blog-post-image(ng-if='post.img' ng-src='{{post.img}}')
         md-card-content
-            h3.md-display-1.blog-title {{ post.title }}
+            h3.md-display-1.blog-title
+                | {{ post.title }}
+                p.md-caption #[strong Ryan Delaney] {{ post.date | date:'mediumDate' }}
             .blog-post-content
                 div(ng-bind-html='post.content')
