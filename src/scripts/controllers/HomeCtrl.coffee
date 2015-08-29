@@ -13,12 +13,14 @@ angular.module 'site.controllers.home', ['ngMaterial', 'site.services']
 
     if animationEnabled
         getButtons().addClass 'button-disabled'
-        getLastLine().addEventListener 'animationend', ->
-            getButtons().removeClass 'button-disabled'
 
-        getLastButton().addEventListener 'animationend', ->
-            $scope.animationEnabled = ''
-            animationEnabled = false
+        for eventType in ['animationend', 'webkitAnimationEnd']
+            getLastLine().addEventListener eventType, ->
+                getButtons().removeClass 'button-disabled'
+
+            getLastButton().addEventListener eventType, ->
+                $scope.animationEnabled = ''
+                animationEnabled = false
 
 .config ($stateProvider) ->
     $stateProvider
@@ -26,7 +28,7 @@ angular.module 'site.controllers.home', ['ngMaterial', 'site.services']
         url: '/home'
         templateUrl: 'home/home.html'
         controller: 'HomeCtrl'
-        
+
 getButtons = ->
     angular.element document.querySelectorAll '.home .main .buttons .button'
 
