@@ -2,7 +2,8 @@
     title="Microsoft Surface Pro: Two Years Later"
     slug="surface-two-years-later"
     date="8/20/2015"
-    tags="surface,pro,microsoft">
+    tags="surface,pro,microsoft"
+    img="/img/blog/surface-pro.png">
 
 I purchased the Microsoft Surface Pro in January 2013. It is a great concept for a device;
 small, functional, powerful, and best of all, adaptable. I think the fact that the Surface Pro
@@ -40,3 +41,10 @@ It would get hot, but not charge anything. After talking to Microsoft support
 about this, they refused to replace the original charger, because my device was
 out of warranty, which was expected. What wasn't expected was the _$80_ replacement
 charger. This led to a string of bad 3rd party charger bought for cheap on Amazon.
+
+### Overall
+
+Overall, the development experience on this device ended up being terrible after
+two years. I could bear up until a certain point with the battery, but once the charging issue
+arose I couldn't chance it dying on me in the middle of one of my classes. I got the new
+Macbook as a replacement, and so far it is great!
