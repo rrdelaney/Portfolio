@@ -12,7 +12,8 @@ angular.module 'site.controllers.blog', ['site.services']
         'background-attachment': 'fixed'
 
     $scope.revealPost = (id) ->
-        $scope.blogPosts[id].revealed = true
+        for post in $scope.blogPosts
+            if post.id is id then post.revealed = true
 
     $scope.searchQuery = ''
     $scope.filterPosts = (searchTerm) ->
