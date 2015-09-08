@@ -1,21 +1,17 @@
 mixin headerIcon(text, icon)
-    p
+    p.md-subhead.page-subhead
         i.fa.fa-lg(class=icon)
         = text
 
 mixin sideCategory(title)
-    h5= title
-    
     .category&attributes(attributes)
+        h5.category-row-title= title
         block
 
 mixin category(title, subtitle)
     .category&attributes(attributes)
-        h5
-            = title
-            | 
-            small
-                strong= subtitle
+        h5.category-title.md-body-2= title
+        h5.category-subtitle.md-caption= subtitle
         
         ul
             block
@@ -24,8 +20,8 @@ mixin category(title, subtitle)
     section.main
         header(layout='row')
             .title(flex='45')
-                h1 Ryan Delaney
-                h5 Software Engineer \ Web Developer
+                h1.md-display-1.page-title Ryan Delaney
+                h5.md-subhead.page-subhead Software Engineer \ Web Developer
 
             .header-col(flex='25')
                 +headerIcon('rdel.io', 'fa-code')
@@ -61,7 +57,7 @@ mixin category(title, subtitle)
             
             div(flex='85')
                 .category-row(flex)
-                    h4 Professional Experience
+                    h4.category-row-title Professional Experience
                     
                     +category('Software Engineering Intern', 'Datto (Summer 2015)')
                         li Developed on an existing codebase to add new features and fix bugs
@@ -81,7 +77,7 @@ mixin category(title, subtitle)
                         li Responsibilities included meeting deadlines for features, code documenation, and integrating code into the existing system
                             
                 .category-row(flex)
-                    h4 Projects
+                    h4.category-row-title Projects
                     
                     +category('Electronics Team Lead', 'Rensselaer Electric Vehicle (Fall 2013 - Spring 2015)')
                         li Design, build, and test an electronics system for an all-electric car
@@ -94,7 +90,7 @@ mixin category(title, subtitle)
                         li Developed server backend using Node.JS and MongoDB, frontend uses Ionic framework with Apache Cordova and Angular.js
                 
                 .category-row(flex)
-                    h4 Skills
+                    h4.category-row-title Skills
                     
                     .category.no-bottom
                         ul
