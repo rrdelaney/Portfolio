@@ -11,10 +11,10 @@ mixin sideCategory(title)
 mixin category(title, subtitle)
     .category&attributes(attributes)
         h5.category-title.md-body-2= title
-        &nbsp;
+        | &nbsp;
         h5.category-subtitle.md-caption= subtitle
         
-        ul
+        ul.category-bullets
             block
 
 .resume

@@ -1,20 +1,13 @@
-@font-face
-    font-family 'Raleway'
-    font-weight 200
-    src url('fonts/raleway@200.woff2')
-    src url('fonts/raleway@200.ttf')
+Raleway(sizes)
+    for size in sizes
+        @font-face
+            font-family 'Raleway'
+            font-weight size
+            src url('fonts/raleway@'+size+'.woff2')
+            src url('fonts/raleway@'+size+'.ttf')
 
-@font-face
-    font-family 'Raleway'
-    font-weight 700
-    src url('fonts/raleway@700.woff2')
-    src url('fonts/raleway@700.ttf')
+Raleway(200 400 500 700)
 
-@font-face
-    font-family 'Raleway'
-    font-weight 400
-    src url('fonts/raleway.woff2')
-    src url('fonts/raleway.ttf')
 
 h1, h2, h3, h4, h5, h6, p, a, li
     font-family 'Raleway'
