@@ -1,5 +1,5 @@
 mixin headerIcon(text, icon)
-    p.md-subhead.page-subhead
+    p.md-subhead.page-subhead&attributes(attributes)
         i.fa.fa-lg(class=icon)
         = text
 
@@ -28,18 +28,16 @@ mixin category(title, subtitle)
 
 .resume
     section.main
-        header(layout='row')
-            .title(flex='45')
-                h1.md-display-1.page-title Ryan Delaney
-                h5.md-subhead.page-subhead Software Engineer \ Web Developer
-
-            .header-col(flex='20')
+        .header
+            .page-title-container
+                h1.page-title.page-title-first Ryan
+                h1.page-title.page-title-last Delaney
+            
+            .header-icons
                 +headerIcon('rdel.io', 'fa-code')
                 +headerIcon('516-281-6378', 'fa-phone')
-
-            .header-col(flex='35')
                 +headerIcon('rrdelaney@outlook.com', 'fa-envelope')
-                +headerIcon('github.com/rrdelaney', 'fa-github')
+                +headerIcon('rrdelaney', 'fa-github')
 
         div(layout='row')
             div(flex='20')
