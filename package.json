@@ -24,7 +24,7 @@
     "grunt-css-url-embed": "^1.6.0",
     "grunt-ftp-deploy": "^0.1.10",
     "grunt-gitinfo": "^0.1.7",
-    "grunt-jadelint": "^0.1.1",
+    "grunt-jadelint": "^0.3.0",
     "grunt-notify": "^0.4.1",
     "grunt-stylint": "^0.1.1",
     "grunt-vulcanize": "^1.0.0",
