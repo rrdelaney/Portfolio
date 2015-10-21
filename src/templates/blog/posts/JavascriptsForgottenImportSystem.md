@@ -65,4 +65,21 @@ var myModule = (function() {
 That creates a module from an external file! Because `module.exports` is initialized with `Object.create(null)`
 rather than `{}`, it doesn't inherit anything from the `Object` prototype!
 
-### Putting It Together
+### Javascript's Old Import
+
+Now that we have our module as a _bare_ object, `with` isn't as dangerous. The code
+
+```javascript
+with (myModule) {
+    ...
+}
+```
+
+only imports exactly what we intended because of the awesomeness of `Object.create`. If we can automate this
+in the build system and prevent developers using `with`, it becomes less scary.
+Using this way, we see the original, intended purpose of `with`. We get the same results as the new
+`import`, but in a more functional, Javascript-y way.
+
+Javascript is a small, beautiful language at its core. Although ES2015 is great in many ways, the hype
+behind classes and modules is weird, because these features have existed in Javascript since the beginning.
+There's just some syntactic sugar now.
