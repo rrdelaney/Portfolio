@@ -1,7 +1,7 @@
 angular = require 'angular'
 Trianglify = require 'trianglify'
 
-animationEnabled = true
+animationEnabled = false
 
 angular.module 'site.controllers.home', ['ngMaterial', 'site.services']
 .controller 'HomeCtrl', ($scope, Background) ->
