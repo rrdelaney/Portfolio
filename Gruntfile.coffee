@@ -269,7 +269,7 @@ module.exports = (grunt) ->
 
     grunt.registerTask 'dist:prepare', ['gitinfo',  'clean:all', 'lint']
     grunt.registerTask 'dist:build', ['browserify:dist', 'stylus:dist', 'jade:dist']
-    grunt.registerTask 'dist:stage', ['uglify', 'cssmin', 'htmlmin', 'copy:dist', 'copy:fonts']
+    grunt.registerTask 'dist:stage', ['uglify', 'cssmin', 'htmlmin', 'copy:resrc', 'copy:fonts']
     grunt.registerTask 'dist', ['dist:prepare', 'dist:build', 'dist:stage']
     grunt.registerTask 'serve', ['debug', 'connect:dist']
 
