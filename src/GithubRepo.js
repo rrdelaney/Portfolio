@@ -1,4 +1,6 @@
 import React from 'react'
+import { Card } from 'belle'
+import { Title, Body } from './Typo'
 
 const getRepo = (owner, name) =>
   fetch(`https://api.github.com/repos/${owner}/${name}`).then(_ => _.json())
@@ -27,11 +29,17 @@ export default class GithubRepo extends React.PureComponent {
     const { stars, url, language } = this.state.data
 
     return (
-      <div>
-        Stars: {stars}
-        Lang: {language}
-        <a href={url}>Link</a>
-      </div>
+      <Card>
+        <Title>
+          <a href={this.state.data.url}>
+            {this.props.owner}/{this.props.name}
+          </a>
+        </Title>
+        <Body>
+          Stars: {stars}
+          Lang: {language}
+        </Body>
+      </Card>
     )
   }
 }
