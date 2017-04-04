@@ -15,26 +15,28 @@ export default class GithubRepo extends React.PureComponent {
     const {
       stargazers_count: stars,
       html_url: url,
+      description,
       language,
     } = await getRepo(this.props.owner, this.props.name)
 
     this.setState({
       loading: false,
-      data: { stars, url, language }
+      data: { stars, url, language, description }
     })
   }
 
   render () {
     if (this.state.loading) return null
-    const { stars, url, language } = this.state.data
+    const { stars, url, language, description } = this.state.data
 
     return (
       <Card>
         <Title>
-          <a href={this.state.data.url}>
-            {this.props.owner}/{this.props.name}
+          <a href={url}>
+            {this.props.name}
           </a>
         </Title>
+        <Body>{description}</Body>
         <Body>
           Stars: {stars}
           Lang: {language}

@@ -9,6 +9,7 @@
     "belle": "^3.0.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-emojione": "^2.0.0",
     "trianglify": "^1.0.1"
   },
   "scripts": {
