@@ -1,7 +1,6 @@
 import React from 'react'
+import glamorous from 'glamorous'
 import { emojify } from 'react-emojione'
-
-export const Icon = ({ name }) => <i className='material-icons'>{name}</i>
 
 const common = {}
 
@@ -15,53 +14,39 @@ const small = {
   fontWeight: 400
 }
 
-const heroStyles = {
-  ...common,
-  ...large,
-  fontSize: '52pt',
-  color: 'white',
-  width: '100%',
-  textAlign: 'center'
-}
-
-export const Hero = ({ children, style = {} }) =>
-  <h1 style={{ ...heroStyles, ...style }}>{children}</h1>
-
-const headingStyles = {
-  ...common,
-  ...large,
-  color: 'white',
-  textDecoration: 'underline',
-  width: '100%',
-  textAlign: 'center'
-}
-
-export const Heading = ({ children, style = {} }) =>
-  <h1 style={{ ...headingStyles, ...style }}>{children}</h1>
-
-const titleStyles = {
-  ...common,
-  ...large
-}
-
-export const Title = ({ children, style = {} }) =>
-  <h3 style={{ ...titleStyles, ...style }}>{children}</h3>
-
 const bodyStyles = {
   ...common,
   ...small
 }
+
+export const Icon = ({ name }) => <i className='material-icons'>{name}</i>
+
+export const Space = glamorous.span({
+  width: '2rem',
+  display: 'inline-block'
+})
+
+export const Hero = glamorous.h1(common, large, {
+  fontSize: '52pt',
+  color: 'white',
+  width: '100%',
+  textAlign: 'center'
+})
+
+export const Heading = glamorous.h1(common, large, {
+  color: 'white',
+  textDecoration: 'underline',
+  width: '100%',
+  textAlign: 'center'
+})
+
+export const Title = glamorous.h3(common, large)
 
 export const Body = ({ children, style = {} }) =>
   <p style={{ ...bodyStyles, ...style }}>
     {React.Children.map(children, c => emojify(`${c}`, { output: 'unicode' }))}
   </p>
 
-const codeStyles = {
-  ...common,
-  ...small,
+export const Code = glamorous.code(common, small, {
   fontFamily: 'Operator Mono'
-}
-
-export const Code = ({ children, style = {} }) =>
-  <code style={{ ...codeStyles, ...style }}>{children}</code>
+})

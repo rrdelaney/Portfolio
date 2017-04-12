@@ -1,11 +1,13 @@
 import React from 'react'
+import glamorous from 'glamorous'
 import Trianglify from 'trianglify'
 
-const backgroundStyles = {
+const BackgroundContainer = glamorous.div(props => ({
   height: '100vh',
   width: '100vw',
-  overflow: 'auto'
-}
+  overflow: 'auto',
+  backgroundImage: props.bg
+}))
 
 export default class Background extends React.Component {
   state = {
@@ -35,10 +37,10 @@ export default class Background extends React.Component {
 
   render () {
     return (
-      <div style={{ ...backgroundStyles, backgroundImage: this.state.bgImg }}>
+      <BackgroundContainer bg={this.state.bgImg}>
         <br />
         {this.props.children}
-      </div>
+      </BackgroundContainer>
     )
   }
 }
