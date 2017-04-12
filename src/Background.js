@@ -1,6 +1,12 @@
 import React from 'react'
 import Trianglify from 'trianglify'
 
+const backgroundStyles = {
+  height: '100vh',
+  width: '100vw',
+  overflow: 'auto'
+}
+
 export default class Background extends React.Component {
   state = {
     bgImg: this.createImg()
@@ -29,7 +35,7 @@ export default class Background extends React.Component {
 
   render () {
     return (
-      <div style={{ backgroundImage: this.state.bgImg, height: '100vh', width: '100vw' }}>
+      <div style={{ ...backgroundStyles, backgroundImage: this.state.bgImg }}>
         <br />
         {this.props.children}
       </div>

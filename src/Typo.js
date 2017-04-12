@@ -1,6 +1,8 @@
 import React from 'react'
 import { emojify } from 'react-emojione'
 
+export const Icon = ({ name }) => <i className='material-icons'>{name}</i>
+
 const common = {}
 
 const large = {
@@ -22,33 +24,44 @@ const heroStyles = {
   textAlign: 'center'
 }
 
-export const Hero = ({ children, styles = {} }) =>
-  <h1 style={{ ...heroStyles, ...styles }}>{children}</h1>
+export const Hero = ({ children, style = {} }) =>
+  <h1 style={{ ...heroStyles, ...style }}>{children}</h1>
 
 const headingStyles = {
   ...common,
   ...large,
   color: 'white',
-  textDecoration: 'underline'
+  textDecoration: 'underline',
+  width: '100%',
+  textAlign: 'center'
 }
 
-export const Heading = ({ children, styles = {} }) =>
-  <h1 style={{ ...headingStyles, ...styles }}>{children}</h1>
+export const Heading = ({ children, style = {} }) =>
+  <h1 style={{ ...headingStyles, ...style }}>{children}</h1>
 
 const titleStyles = {
   ...common,
   ...large
 }
 
-export const Title = ({ children, styles = {} }) =>
-  <h3 style={{ ...titleStyles, ...styles}}>{children}</h3>
+export const Title = ({ children, style = {} }) =>
+  <h3 style={{ ...titleStyles, ...style }}>{children}</h3>
 
 const bodyStyles = {
   ...common,
   ...small
 }
 
-export const Body = ({ children, styles = {} }) =>
-  <p style={{ ...bodyStyles, ...styles }}>
+export const Body = ({ children, style = {} }) =>
+  <p style={{ ...bodyStyles, ...style }}>
     {React.Children.map(children, c => emojify(`${c}`, { output: 'unicode' }))}
   </p>
+
+const codeStyles = {
+  ...common,
+  ...small,
+  fontFamily: 'Operator Mono'
+}
+
+export const Code = ({ children, style = {} }) =>
+  <code style={{ ...codeStyles, ...style }}>{children}</code>
