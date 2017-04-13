@@ -1,7 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
+import { rehydrate } from 'glamor'
 import './index.css'
+
+if (window._glam) rehydrate(window._glam)
+
+const { default: App } = require('./App')
 
 const root = document.getElementById('root')
 ReactDOM.render(<App />, root)

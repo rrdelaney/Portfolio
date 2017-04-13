@@ -11,7 +11,7 @@ const BackgroundContainer = glamorous.div(props => ({
 
 export default class Background extends React.Component {
   state = {
-    bgImg: this.createImg()
+    bgImg: ''
   }
 
   createImg () {
@@ -28,6 +28,7 @@ export default class Background extends React.Component {
   }
 
   componentDidMount () {
+    this.updateBackground()
     window.addEventListener('resize', this.updateBackground.bind(this))
   }
 

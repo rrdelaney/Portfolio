@@ -26,8 +26,10 @@ const getRepo = async (owner, name) => {
 
 export default class GithubRepo extends React.PureComponent {
   state = {
-    loading: true,
-    data: null
+    stars: null,
+    url: null,
+    description: null,
+    language: null
   }
 
   async componentDidMount () {
@@ -39,14 +41,15 @@ export default class GithubRepo extends React.PureComponent {
     } = await getRepo(this.props.owner, this.props.name)
 
     this.setState({
-      loading: false,
-      data: { stars, url, language, description }
+      stars,
+      url,
+      language,
+      description
     })
   }
 
   render () {
-    if (this.state.loading) return null
-    const { stars, url, language, description } = this.state.data
+    const { stars, url, language, description } = this.state
 
     return (
       <Card>
