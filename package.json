@@ -25,7 +25,7 @@
     "test": "standard && react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "prerender": "NODE_ENV=development babel-node --presets=react-app prerender.js",
-    "deploy": "gh-pages -d build -b master"
+    "deploy": "gh-pages -d build -b master",
     "lint": "standard | snazzy",
     "lint:fix": "standard --fix"
   },
