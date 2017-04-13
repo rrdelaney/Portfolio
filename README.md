@@ -13,13 +13,13 @@ Uses:
 First install dependencies by running:
 
 ```
-npm install
+yarn install
 ```
 
 and then start the app with:
 
 ```
-npm start
+yarn start
 ```
 
 This will start the app with hot-reloading enabled.
@@ -28,7 +28,7 @@ The site is developed with the StandardJS styleguide.
 Lint with:
 
 ```
-npm run lint
+yarn lint
 ```
 
 ## Building
@@ -40,16 +40,15 @@ the site.
 To build the JS, run:
 
 ```
-npm run build
+yarn build
 ```
 
 To prerender the site, run:
 
 ```
-npm run prerender
+yarn prerender
 ```
 
 ## Things I want to do
 
-* Use Yarn
 * Switch to Reason
