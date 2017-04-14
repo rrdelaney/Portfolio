@@ -24,6 +24,13 @@ const getRepo = async (owner, name) => {
   return JSON.parse(localStorage[cacheRepoName])
 }
 
+const tryCache = (owner, name) => {
+  const cacheRepoName = `repo:${owner}/${name}`
+  const repoData = JSON.parse(localStorage[cacheRepoName])
+
+  return repoData
+}
+
 export default class GithubRepo extends React.PureComponent {
   state = {
     stars: null,
@@ -32,7 +39,21 @@ export default class GithubRepo extends React.PureComponent {
     language: null
   }
 
+  tryLoadingCachedData () {
+    const cachedData = tryCache(this.props.owner, this.props.name)
+    if (cachedData) {
+      this.setState({
+        stars: cachedData.stargazers_count,
+        url: cachedData.html_url,
+        description: cachedData.description,
+        language: cachedData.language
+      })
+    }
+  }
+
   async componentDidMount () {
+    this.tryLoadingCachedData()
+
     const {
       stargazers_count: stars,
       html_url: url,
