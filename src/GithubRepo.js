@@ -26,9 +26,9 @@ const getRepo = async (owner, name) => {
 
 const tryCache = (owner, name) => {
   const cacheRepoName = `repo:${owner}/${name}`
-  const repoData = JSON.parse(localStorage[cacheRepoName])
+  const repoData = localStorage[cacheRepoName]
 
-  return repoData
+  return repoData && JSON.parse(repoData)
 }
 
 export default class GithubRepo extends React.PureComponent {
