@@ -2,12 +2,31 @@ import React from 'react'
 import glamorous from 'glamorous'
 import Trianglify from 'trianglify'
 
-const BackgroundContainer = glamorous.div(props => ({
+const ParallaxContainer = glamorous.div({
   height: '100vh',
   width: '100vw',
-  overflow: 'auto',
-  backgroundImage: props.bg
-}))
+  perspective: '1px',
+  overflowX: 'hidden',
+  overflowY: 'auto'
+})
+
+const parallaxLayer = {
+  position: 'absolute',
+  top: '0',
+  right: '0',
+  bottom: '0',
+  left: '0'
+}
+
+const ParallaxBase = glamorous.div({
+  ...parallaxLayer,
+  transform: 'translateZ(0)'
+})
+
+const ParallaxBack = glamorous.div({
+  ...parallaxLayer,
+  transform: 'translateZ(-1px) scale(2)'
+})
 
 export default class Background extends React.Component {
   state = {
@@ -20,7 +39,7 @@ export default class Background extends React.Component {
       height: window.innerHeight
     })
 
-    return `url(${triangles.png()})`
+    return triangles.png()
   }
 
   updateBackground () {
@@ -38,10 +57,14 @@ export default class Background extends React.Component {
 
   render () {
     return (
-      <BackgroundContainer bg={this.state.bgImg}>
-        <br />
-        {this.props.children}
-      </BackgroundContainer>
+      <ParallaxContainer>
+        <ParallaxBack>
+          <img alt='' src={this.state.bgImg} />
+        </ParallaxBack>
+        <ParallaxBase>
+          {this.props.children}
+        </ParallaxBase>
+      </ParallaxContainer>
     )
   }
 }
