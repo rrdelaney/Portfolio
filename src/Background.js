@@ -36,7 +36,7 @@ export default class Background extends React.Component {
   createImg () {
     const triangles = Trianglify({
       width: window.innerWidth,
-      height: window.innerHeight
+      height: this._baseContainer.clientHeight
     })
 
     return triangles.png()
@@ -61,7 +61,7 @@ export default class Background extends React.Component {
         <ParallaxBack>
           <img alt='' src={this.state.bgImg} />
         </ParallaxBack>
-        <ParallaxBase>
+        <ParallaxBase innerRef={c => { this._baseContainer = c }}>
           {this.props.children}
         </ParallaxBase>
       </ParallaxContainer>
