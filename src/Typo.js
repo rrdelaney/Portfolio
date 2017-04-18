@@ -51,7 +51,8 @@ export const Code = glamorous.code(common, small, {
   fontFamily: 'Operator Mono'
 })
 
-export const Link = glamorous.a(common, small, {
+export const Link = glamorous.a(common, small, props => ({
   fontFamily: 'Roboto Mono',
-  color: 'cornflowerblue'
-})
+  color: props.white ? 'white' : 'cornflowerblue',
+  padding: props.heading ? '0 1rem' : null
+}))

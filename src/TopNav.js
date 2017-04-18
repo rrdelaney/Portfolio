@@ -4,12 +4,12 @@ import { Link } from './Typo'
 
 const NavBar = glamorous.div(props => ({
   position: 'absolute',
-  backgroundColor: 'white',
+  backgroundColor: props.clear ? 'rgba(0, 0, 0, 0)' : 'white',
   height: '3rem',
   width: '100vw',
   top: props.isVisible ? 0 : '-3rem',
-  transition: 'top .5s ease-out',
-  padding: '1rem 2rem 0'
+  padding: '1rem 2rem 0',
+  transition: 'top .5s ease-out, background-color .5s ease-out'
 }))
 
 export default class TopNav extends Component {
@@ -24,9 +24,9 @@ export default class TopNav extends Component {
   }
 
   render () {
-    return <NavBar isVisible={this.state.isVisible}>
-      <Link href='https://github.com/rrdelaney'>Github</Link>
-      <Link href='https://twitter.com/_rydelan'>Twitter</Link>
+    return <NavBar clear={this.props.isTop} isVisible={this.state.isVisible}>
+      <Link heading white={this.props.isTop} href='https://github.com/rrdelaney'>Github</Link>
+      <Link heading white={this.props.isTop} href='https://twitter.com/_rydelan'>Twitter</Link>
     </NavBar>
   }
 }

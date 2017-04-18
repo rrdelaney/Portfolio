@@ -1,6 +1,7 @@
 import React from 'react'
 import glamorous from 'glamorous'
 import Trianglify from 'trianglify'
+import TopNav from './TopNav'
 
 const BackgroundContainer = glamorous.div(props => ({
   height: '100vh',
@@ -12,7 +13,8 @@ const BackgroundContainer = glamorous.div(props => ({
 
 export default class Background extends React.Component {
   state = {
-    bgImg: ''
+    bgImg: '',
+    isTop: true
   }
 
   createImg () {
@@ -24,6 +26,10 @@ export default class Background extends React.Component {
     return `url(${triangles.png()})`
   }
 
+  styleOnScroll = () => {
+    this.setState({ isTop: this._bgContainer.scrollTop < 10 })
+  }
+
   updateBackground () {
     this.setState({ bgImg: this.createImg() })
   }
@@ -31,6 +37,7 @@ export default class Background extends React.Component {
   componentDidMount () {
     this.updateBackground()
     window.addEventListener('resize', this.updateBackground.bind(this))
+    this._bgContainer.addEventListener('scroll', this.styleOnScroll)
   }
 
   componentWillUnmount () {
@@ -39,7 +46,8 @@ export default class Background extends React.Component {
 
   render () {
     return (
-      <BackgroundContainer bgImg={this.state.bgImg}>
+      <BackgroundContainer bgImg={this.state.bgImg} innerRef={c => { this._bgContainer = c }}>
+        <TopNav isTop={this.state.isTop} />
         <br />
         {this.props.children}
       </BackgroundContainer>
