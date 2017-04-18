@@ -50,3 +50,8 @@ export const Body = ({ children, style = {} }) =>
 export const Code = glamorous.code(common, small, {
   fontFamily: 'Operator Mono'
 })
+
+export const Link = glamorous.a(common, small, {
+  fontFamily: 'Roboto Mono',
+  color: 'cornflowerblue'
+})

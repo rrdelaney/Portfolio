@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import glamorous from 'glamorous'
-import { Icon } from './Typo'
+import { Link } from './Typo'
 
 const NavBar = glamorous.div(props => ({
   position: 'absolute',
@@ -25,7 +25,8 @@ export default class TopNav extends Component {
 
   render () {
     return <NavBar isVisible={this.state.isVisible}>
-      <Icon name='code' />&nbsp;<a href='https://github.com/rrdelaney'>Github</a>
+      <Link href='https://github.com/rrdelaney'>Github</Link>
+      <Link href='https://twitter.com/_rydelan'>Twitter</Link>
     </NavBar>
   }
 }

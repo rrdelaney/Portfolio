@@ -1,5 +1,6 @@
 import React from 'react'
 import glamorous from 'glamorous'
+import TopNav from './TopNav'
 import GithubRepo from './GithubRepo'
 import Background from './Background'
 import { Hero, Heading } from './Typo'
@@ -14,6 +15,7 @@ const CardLayout = glamorous.div({
 export default function App () {
   return (
     <Background>
+      <TopNav />
       <Hero>Ryan Delaney</Hero>
       <Heading>Open Source</Heading>
       <CardLayout>
