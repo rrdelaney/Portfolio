@@ -8,7 +8,9 @@ const BackgroundContainer = glamorous.div(props => ({
   width: '100vw',
   overflow: 'auto',
   backgroundImage: props.bgImg,
-  backgroundColor: props.bgImg ? null : 'grey'
+  backgroundColor: props.bgImg ? null : 'grey',
+  backgroundPositionY: props.bgOffset,
+  transition: 'background-position-y .01s linear'
 }))
 
 export default class Background extends React.Component {
@@ -27,7 +29,11 @@ export default class Background extends React.Component {
   }
 
   styleOnScroll = () => {
-    this.setState({ isTop: this._bgContainer.scrollTop < 10 })
+    const isTop = this._bgContainer.scrollTop < 10
+    const bgOffset = -Math.floor((this._bgContainer.scrollTop / this._bgContainer.scrollHeight) * window.innerHeight)
+    console.log(this._bgContainer.scrollTop / this._bgContainer.scrollHeight)
+
+    this.setState({ isTop, bgOffset })
   }
 
   updateBackground () {
@@ -46,7 +52,7 @@ export default class Background extends React.Component {
 
   render () {
     return (
-      <BackgroundContainer bgImg={this.state.bgImg} innerRef={c => { this._bgContainer = c }}>
+      <BackgroundContainer bgImg={this.state.bgImg} bgOffset={this.state.bgOffset} innerRef={c => { this._bgContainer = c }}>
         <TopNav isTop={this.state.isTop} />
         <br />
         {this.props.children}
