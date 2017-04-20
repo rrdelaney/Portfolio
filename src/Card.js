@@ -4,7 +4,7 @@ export default glamorous.div(props => ({
   backgroundColor: 'whitesmoke',
   maxWidth: '400px',
   width: '90vw',
-  padding: '1rem',
+  padding: props.noBottom ? '1rem 1rem 0' : '1rem',
   margin: props.center ? '0 auto' : '1rem',
   boxShadow: 'rgba(0, 0, 0, .2) 2px 2px 4px 2px',
   '@media print': {
@@ -12,3 +12,8 @@ export default glamorous.div(props => ({
     border: '1px solid grey'
   }
 }))
+
+export const CardImg = glamorous.img({
+  width: 'calc(100% + 2rem)',
+  marginLeft: '-1rem'
+})
