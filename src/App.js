@@ -26,6 +26,7 @@ export default function App () {
           description='An IDE for novels'
           img='rpi.jpg' />
         <Project
+          swapped
           name='Todd App'
           url='https://todd-testing.firebaseapp.com/'
           description='The programmable to-do app'

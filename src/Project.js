@@ -1,15 +1,20 @@
 import React from 'react'
 import Card, { CardImg } from './Card'
-import { Title, Body, Link } from './Typo'
+import { Title, Link } from './Typo'
 
-export default function Project ({ name, url, description, img }) {
+export default function Project ({ name, url, description, img, swapped }) {
+  const title = (
+    <Title>
+      <Link href={url}>{name}</Link>
+    </Title>
+  )
+
+  const image = <CardImg side src={img} />
+
   return (
-    <Card noBottom>
-      <Title>
-        <Link href={url}>{name}</Link>
-      </Title>
-      <Body>{description}</Body>
-      <CardImg src={img} />
+    <Card wide>
+      {swapped ? image : title}
+      {swapped ? title : image}
     </Card>
   )
 }
