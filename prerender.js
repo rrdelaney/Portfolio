@@ -18,7 +18,7 @@ const reactHtml = `<div id="root">${html}</div>`
 const reactCss = `<style>${css}</style>`
 const reactIds = `<script>window._glam = ${JSON.stringify(ids)}</script>`
 
-console.log(chalk.blue('==>  Generating new HTML'))
+console.log(chalk.blue('==> Generating new HTML'))
 const newHtml = originalHtml
   .replace('<div id="root"></div>', reactHtml)
   .replace('<style id="SERVER_INJECT_STYLES"></style>', reactCss)
