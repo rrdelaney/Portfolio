@@ -1,15 +1,20 @@
 import React from 'react'
+import dedent from 'dedent'
 import Card from './Card'
-import { Body } from './Typo'
+import { Description } from './Typo'
 
-const aboutContent = `
-  I am RYAN O_O
+const aboutContent = dedent`
+  Developer currently @ Microsoft
+
+  Insterested in frontend development, programming languages, and improving developer experience
 `
 
 export default function About() {
   return (
     <Card center transparent>
-      <Body style={{ fontFamily: 'Roboto Mono' }}>{aboutContent}</Body>
+      <Description>
+        {aboutContent}
+      </Description>
     </Card>
   )
 }

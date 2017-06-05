@@ -3,8 +3,8 @@ import glamorous from 'glamorous'
 export default glamorous.div(props => ({
   backgroundColor: props.transparent ? '' : 'whitesmoke',
   color: props.transparent ? 'whitesmoke' : '#444444',
-  borderTop: props.transparent ? '1px solid whitesmoke' : '',
-  borderBottom: props.transparent ? '1px solid whitesmoke' : '',
+  borderTop: props.transparent ? '1px solid whitesmoke' : 'none',
+  borderBottom: props.transparent ? '1px solid whitesmoke' : 'none',
   maxWidth: props.wide ? '600px' : '400px',
   width: '90vw',
   padding: props.noBottom ? '1rem 1rem 0' : '1rem',
@@ -20,9 +20,11 @@ export default glamorous.div(props => ({
   }
 }))
 
-export const CardImg = glamorous.img(props => ({
+export const CardImg = glamorous.div(props => ({
   width: props.side ? '50%' : 'calc(100% + 2rem)',
-  height: props.side ? '100%' : null,
+  height: '100%',
+  backgroundSize: 'cover',
+  backgroundImage: `url(${props.src})`,
   '@media print': {
     display: 'none'
   }

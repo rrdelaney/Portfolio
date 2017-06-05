@@ -10,8 +10,8 @@ const large = {
 }
 
 const small = {
-  fontFamily: 'Roboto',
-  fontWeight: 300
+  fontFamily: 'Cutive Mono',
+  fontWeight: 400
 }
 
 const bodyStyles = {
@@ -62,3 +62,7 @@ export const Link = glamorous.a(common, small, props => ({
   color: props.white ? 'whitesmoke' : 'cornflowerblue',
   padding: props.heading ? '0 1rem' : null
 }))
+
+export const Description = glamorous.div(bodyStyles, {
+  whiteSpace: 'pre-line'
+})
