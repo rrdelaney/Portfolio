@@ -1,19 +1,12 @@
 import React from 'react'
-import dedent from 'dedent'
 import Card from './Card'
 import { Description } from './Typo'
 
-const aboutContent = dedent`
-  Developer currently @ Microsoft
-
-  Insterested in frontend development, programming languages, and improving developer experience
-`
-
-export default function About() {
+export default function About({ children }) {
   return (
     <Card center transparent>
       <Description>
-        {aboutContent}
+        {children}
       </Description>
     </Card>
   )

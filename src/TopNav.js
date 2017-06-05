@@ -9,7 +9,8 @@ const NavBar = glamorous.div(props => ({
   height: '3rem',
   width: '100vw',
   top: props.isVisible ? 0 : '-3rem',
-  padding: '1rem 2rem 0',
+  padding: '1rem 0 2rem',
+  marginRight: '-2rem',
   transition: 'top .5s ease-out, background-color .5s ease-out',
   '@media print': {
     display: 'none'
@@ -42,22 +43,35 @@ export default class TopNav extends Component {
   }
 
   render() {
+    const links = this.props.links.filter(l => !l.right).map(l =>
+      <Link
+        key={l.text}
+        heading
+        white={this.state.isTop}
+        href={l.href}
+        onClick={l.onClick}
+      >
+        {l.text}
+      </Link>
+    )
+
+    const rightLinks = this.props.links.filter(l => !!l.right).map(l =>
+      <Link
+        key={l.text}
+        heading
+        white={this.state.isTop}
+        href={l.href}
+        onClick={l.onClick}
+        style={{ float: 'right' }}
+      >
+        {l.text}
+      </Link>
+    )
+
     return (
       <NavBar clear={this.state.isTop} isVisible={this.state.isVisible}>
-        <Link
-          heading
-          white={this.state.isTop}
-          href="https://github.com/rrdelaney"
-        >
-          Github
-        </Link>
-        <Link
-          heading
-          white={this.state.isTop}
-          href="https://twitter.com/_rrdelaney"
-        >
-          Twitter
-        </Link>
+        {links}
+        {rightLinks}
       </NavBar>
     )
   }

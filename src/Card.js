@@ -13,6 +13,7 @@ export default glamorous.div(props => ({
   display: props.wide ? 'flex' : 'block',
   justifyContent: props.wide ? 'space-between' : null,
   '@media print': {
+    color: '#444444',
     boxShadow: 'none',
     border: '1px solid grey',
     padding: '10px',
