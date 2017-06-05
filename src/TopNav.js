@@ -28,7 +28,7 @@ export default class TopNav extends Component {
     })
   }
 
-  componentDidMount () {
+  componentDidMount() {
     window.addEventListener('scroll', this.styleOnScroll)
 
     this.isVisibleTimeout = setTimeout(() => {
@@ -36,15 +36,29 @@ export default class TopNav extends Component {
     }, 500)
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     window.removeEventListener('scroll', this.styleOnScroll)
     if (this.isVisibleTimeout) clearTimeout(this.isVisibleTimeout)
   }
 
-  render () {
-    return <NavBar clear={this.state.isTop} isVisible={this.state.isVisible}>
-      <Link heading white={this.state.isTop} href='https://github.com/rrdelaney'>Github</Link>
-      <Link heading white={this.state.isTop} href='https://twitter.com/_rrdelaney'>Twitter</Link>
-    </NavBar>
+  render() {
+    return (
+      <NavBar clear={this.state.isTop} isVisible={this.state.isVisible}>
+        <Link
+          heading
+          white={this.state.isTop}
+          href="https://github.com/rrdelaney"
+        >
+          Github
+        </Link>
+        <Link
+          heading
+          white={this.state.isTop}
+          href="https://twitter.com/_rrdelaney"
+        >
+          Twitter
+        </Link>
+      </NavBar>
+    )
   }
 }

@@ -7,12 +7,12 @@ export default class Background extends React.Component {
     isPrinting: false
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.mediaQuery = window.matchMedia('print')
     this.mediaQuery.addListener(this.onChange)
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.mediaQuery.removeListener(this.onChange)
   }
 
@@ -20,12 +20,17 @@ export default class Background extends React.Component {
     this.setState({ isPrinting: matches })
   }
 
-  render () {
+  render() {
     if (!this.state.bgImg) return null
     if (this.state.isPrinting) return <div>{this.props.children}</div>
 
     return (
-      <Parallax bgImage={this.state.bgImg} bgHeight='2000' bgWidth='3000' strength={400}>
+      <Parallax
+        bgImage={this.state.bgImg}
+        bgHeight="2000"
+        bgWidth="3000"
+        strength={400}
+      >
         <br />
         {this.props.children}
       </Parallax>

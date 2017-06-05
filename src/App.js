@@ -14,7 +14,7 @@ const CardLayout = glamorous.div({
   flexWrap: 'wrap'
 })
 
-export default function App () {
+export default function App() {
   return (
     <Background>
       <TopNav />
@@ -23,25 +23,27 @@ export default function App () {
       <Heading>Projects</Heading>
       <CardLayout>
         <Project
-          name='Framework Press'
-          url='https://framework.press'
-          description='An IDE for novels'
-          img='rpi.jpg' />
+          name="Framework Press"
+          url="https://framework.press"
+          description="An IDE for novels"
+          img="rpi.jpg"
+        />
         <Project
           swapped
-          name='Todd App'
-          url='https://todd-testing.firebaseapp.com/'
-          description='The programmable to-do app'
-          img='seattle.jpg' />
+          name="Todd App"
+          url="https://todd-testing.firebaseapp.com/"
+          description="The programmable to-do app"
+          img="seattle.jpg"
+        />
       </CardLayout>
       <Heading>Open Source</Heading>
       <CardLayout>
-        <GithubRepo owner='rrdelaney' name='material-resume' />
-        <GithubRepo owner='rrdelaney' name='horizon-devtools' />
-        <GithubRepo owner='rrdelaney' name='HzQL' />
-        <GithubRepo owner='rrdelaney' name='bs-loader' />
-        <GithubRepo owner='rrdelaney' name='reyle' />
-        <GithubRepo owner='superfeed' name='superfeed' />
+        <GithubRepo owner="rrdelaney" name="material-resume" />
+        <GithubRepo owner="rrdelaney" name="horizon-devtools" />
+        <GithubRepo owner="rrdelaney" name="HzQL" />
+        <GithubRepo owner="rrdelaney" name="bs-loader" />
+        <GithubRepo owner="rrdelaney" name="reyle" />
+        <GithubRepo owner="superfeed" name="superfeed" />
       </CardLayout>
     </Background>
   )

@@ -19,7 +19,7 @@ const bodyStyles = {
   ...small
 }
 
-export const Icon = ({ name }) => <i className='material-icons'>{name}</i>
+export const Icon = ({ name }) => <i className="material-icons">{name}</i>
 
 export const Space = glamorous.span({
   width: '2rem',

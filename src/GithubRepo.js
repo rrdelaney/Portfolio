@@ -7,11 +7,12 @@ const getRepo = async (owner, name) => {
   const cacheETagName = `etag:${owner}/${name}`
   const cachedETag = localStorage[cacheETagName]
 
-  const response = await fetch(`https://api.github.com/repos/${owner}/${name}`, {
-    headers: cachedETag
-      ? { 'If-None-Match': cachedETag }
-      : {}
-  })
+  const response = await fetch(
+    `https://api.github.com/repos/${owner}/${name}`,
+    {
+      headers: cachedETag ? { 'If-None-Match': cachedETag } : {}
+    }
+  )
 
   const newETag = response.headers.get('etag')
   localStorage[cacheETagName] = newETag
@@ -39,7 +40,7 @@ export default class GithubRepo extends React.PureComponent {
     language: null
   }
 
-  tryLoadingCachedData () {
+  tryLoadingCachedData() {
     const cachedData = tryCache(this.props.owner, this.props.name)
 
     if (cachedData) {
@@ -54,7 +55,7 @@ export default class GithubRepo extends React.PureComponent {
     return !!cachedData
   }
 
-  async componentDidMount () {
+  async componentDidMount() {
     const didLoad = this.tryLoadingCachedData()
 
     if (!didLoad) {
@@ -74,7 +75,7 @@ export default class GithubRepo extends React.PureComponent {
     }
   }
 
-  render () {
+  render() {
     const { stars, url, language, description } = this.state
 
     return (
@@ -83,9 +84,9 @@ export default class GithubRepo extends React.PureComponent {
           <Link href={url}>{this.props.name}</Link>
         </Title>
         <Title>
-          <Icon name='code' /> {language}
+          <Icon name="code" /> {language}
           <Space />
-          <Icon name='star' /> {stars}
+          <Icon name="star" /> {stars}
         </Title>
         <Body>{description}</Body>
       </Card>
