@@ -5,7 +5,7 @@ import { Link } from './Typo'
 const NavBar = glamorous.div(props => ({
   zIndex: 999,
   position: 'fixed',
-  backgroundColor: props.clear ? 'rgba(0, 0, 0, 0)' : 'smokewhite',
+  backgroundColor: props.clear ? 'rgba(0, 0, 0, 0)' : 'whitesmoke',
   height: '3rem',
   width: '100vw',
   top: props.isVisible ? 0 : '-3rem',
