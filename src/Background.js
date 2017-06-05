@@ -20,6 +20,11 @@ export default class Background extends React.Component {
     this.setState({ isPrinting: matches })
   }
 
+  forcePrint = isPrinting =>
+    new Promise(resolve => {
+      this.setState({ isPrinting }, resolve)
+    })
+
   render() {
     if (!this.state.bgImg) return null
     if (this.state.isPrinting) return <div>{this.props.children}</div>
