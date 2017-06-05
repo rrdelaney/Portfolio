@@ -2,6 +2,7 @@ import React from 'react'
 import glamorous from 'glamorous'
 import Background from './Background'
 import TopNav from './TopNav'
+import About from './About'
 import Project from './Project'
 import GithubRepo from './GithubRepo'
 import { Hero, Heading } from './Typo'
@@ -18,6 +19,7 @@ export default function App () {
     <Background>
       <TopNav />
       <Hero>Ryan Delaney</Hero>
+      <About />
       <Heading>Projects</Heading>
       <CardLayout>
         <Project

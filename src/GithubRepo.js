@@ -41,6 +41,7 @@ export default class GithubRepo extends React.PureComponent {
 
   tryLoadingCachedData () {
     const cachedData = tryCache(this.props.owner, this.props.name)
+
     if (cachedData) {
       this.setState({
         stars: cachedData.stargazers_count,
@@ -49,24 +50,28 @@ export default class GithubRepo extends React.PureComponent {
         language: cachedData.language
       })
     }
+
+    return !!cachedData
   }
 
   async componentDidMount () {
-    this.tryLoadingCachedData()
+    const didLoad = this.tryLoadingCachedData()
 
-    const {
-      stargazers_count: stars,
-      html_url: url,
-      description,
-      language
-    } = await getRepo(this.props.owner, this.props.name)
+    if (!didLoad) {
+      const {
+        stargazers_count: stars,
+        html_url: url,
+        description,
+        language
+      } = await getRepo(this.props.owner, this.props.name)
 
-    this.setState({
-      stars,
-      url,
-      language,
-      description
-    })
+      this.setState({
+        stars,
+        url,
+        language,
+        description
+      })
+    }
   }
 
   render () {

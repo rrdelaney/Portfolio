@@ -8,8 +8,8 @@ const aboutContent = `
 
 export default function About () {
   return (
-    <Card center>
-      <Body>{aboutContent}</Body>
+    <Card center transparent>
+      <Body style={{ fontFamily: 'Roboto Mono' }}>{aboutContent}</Body>
     </Card>
   )
 }

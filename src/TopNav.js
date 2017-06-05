@@ -10,7 +10,10 @@ const NavBar = glamorous.div(props => ({
   width: '100vw',
   top: props.isVisible ? 0 : '-3rem',
   padding: '1rem 2rem 0',
-  transition: 'top .5s ease-out, background-color .5s ease-out'
+  transition: 'top .5s ease-out, background-color .5s ease-out',
+  '@media print': {
+    display: 'none'
+  }
 }))
 
 export default class TopNav extends Component {
@@ -28,19 +31,20 @@ export default class TopNav extends Component {
   componentDidMount () {
     window.addEventListener('scroll', this.styleOnScroll)
 
-    setTimeout(() => {
+    this.isVisibleTimeout = setTimeout(() => {
       this.setState({ isVisible: true })
     }, 500)
   }
 
   componentWillUnmount () {
     window.removeEventListener('scroll', this.styleOnScroll)
+    if (this.isVisibleTimeout) clearTimeout(this.isVisibleTimeout)
   }
 
   render () {
     return <NavBar clear={this.state.isTop} isVisible={this.state.isVisible}>
       <Link heading white={this.state.isTop} href='https://github.com/rrdelaney'>Github</Link>
-      <Link heading white={this.state.isTop} href='https://twitter.com/_rydelan'>Twitter</Link>
+      <Link heading white={this.state.isTop} href='https://twitter.com/_rrdelaney'>Twitter</Link>
     </NavBar>
   }
 }

@@ -11,7 +11,7 @@ const large = {
 
 const small = {
   fontFamily: 'Roboto',
-  fontWeight: 400
+  fontWeight: 300
 }
 
 const bodyStyles = {
@@ -28,16 +28,22 @@ export const Space = glamorous.span({
 
 export const Hero = glamorous.h1(common, large, {
   fontSize: '52pt',
-  color: 'white',
+  color: 'whitesmoke',
   width: '100%',
-  textAlign: 'center'
+  textAlign: 'center',
+  '@media print': {
+    color: '#444444'
+  }
 })
 
 export const Heading = glamorous.h1(common, large, {
-  color: 'white',
+  color: 'whitesmoke',
   textDecoration: 'underline',
   width: '100%',
-  textAlign: 'center'
+  textAlign: 'center',
+  '@media print': {
+    color: '#444444'
+  }
 })
 
 export const Title = glamorous.h3(common, large)
@@ -53,6 +59,6 @@ export const Code = glamorous.code(common, small, {
 
 export const Link = glamorous.a(common, small, props => ({
   fontFamily: 'Roboto Mono',
-  color: props.white ? 'white' : 'cornflowerblue',
+  color: props.white ? 'whitesmoke' : 'cornflowerblue',
   padding: props.heading ? '0 1rem' : null
 }))
