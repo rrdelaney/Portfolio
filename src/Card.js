@@ -15,7 +15,10 @@ export default glamorous.div(props => ({
   '@media print': {
     color: '#444444',
     boxShadow: 'none',
-    border: '1px solid grey',
+    borderTop: '1px solid grey',
+    borderLeft: '1px solid grey',
+    borderBottom: 'none',
+    borderRight: 'none',
     padding: '10px',
     margin: '10px'
   }

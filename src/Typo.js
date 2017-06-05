@@ -2,7 +2,8 @@ import React from 'react'
 import glamorous from 'glamorous'
 import { emojify } from 'react-emojione'
 
-const common = {}
+const common = ({ hidePrint }) =>
+  !hidePrint ? {} : { '@media print': { display: 'none' } }
 
 const large = {
   fontFamily: 'Roboto Mono',
@@ -48,6 +49,8 @@ export const Heading = glamorous.h1(common, large, {
 
 export const Title = glamorous.h3(common, large)
 
+export const Subtitle = glamorous.h5(common, large)
+
 export const Body = ({ children, style = {} }) =>
   <p style={{ ...bodyStyles, ...style }}>
     {React.Children.map(children, c => emojify(`${c}`, { output: 'unicode' }))}
@@ -60,7 +63,10 @@ export const Code = glamorous.code(common, small, {
 export const Link = glamorous.a(common, small, props => ({
   fontFamily: 'Roboto Mono',
   color: props.white ? 'whitesmoke' : 'cornflowerblue',
-  padding: props.heading ? '0 1rem' : null
+  padding: props.heading ? '0 1rem' : null,
+  '@media print': {
+    color: '#444444'
+  }
 }))
 
 export const Description = glamorous.div(bodyStyles, {

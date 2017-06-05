@@ -25,7 +25,7 @@ export default class App extends Component {
     { text: 'GitHub', href: 'https://github.com/rrdelaney' },
     { text: 'Twitter', href: 'https://twitter.com/_rrdelaney' },
     {
-      text: 'Resume',
+      text: 'Résumé',
       href: '',
       right: true,
       onClick: async e => {

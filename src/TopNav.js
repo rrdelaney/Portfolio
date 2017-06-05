@@ -5,15 +5,16 @@ import { Link } from './Typo'
 const NavBar = glamorous.div(props => ({
   zIndex: 999,
   position: 'fixed',
-  backgroundColor: props.clear ? 'rgba(0, 0, 0, 0)' : 'white',
+  backgroundColor: props.clear ? 'rgba(0, 0, 0, 0)' : 'smokewhite',
   height: '3rem',
   width: '100vw',
   top: props.isVisible ? 0 : '-3rem',
-  padding: '1rem 0 2rem',
+  paddingTop: '1rem',
   marginRight: '-2rem',
   transition: 'top .5s ease-out, background-color .5s ease-out',
   '@media print': {
-    display: 'none'
+    position: 'absolute',
+    top: 0
   }
 }))
 
@@ -59,6 +60,7 @@ export default class TopNav extends Component {
       <Link
         key={l.text}
         heading
+        hidePrint
         white={this.state.isTop}
         href={l.href}
         onClick={l.onClick}

@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from './Card'
-import { Title, Body, Icon, Space, Link } from './Typo'
+import { Title, Body, Subtitle, Icon, Space, Link } from './Typo'
 
 const getRepo = async (owner, name) => {
   const cacheRepoName = `repo:${owner}/${name}`
@@ -83,11 +83,11 @@ export default class GithubRepo extends React.PureComponent {
         <Title>
           <Link href={url}>{this.props.name}</Link>
         </Title>
-        <Title>
+        <Subtitle>
           <Icon name="code" /> {language}
           <Space />
           <Icon name="star" /> {stars}
-        </Title>
+        </Subtitle>
         <Body>{description}</Body>
       </Card>
     )
