@@ -2,8 +2,6 @@
 
 > My personal website
 
-[![CircleCI](https://circleci.com/gh/rrdelaney/rrdelaney.github.io.svg?style=svg)](https://circleci.com/gh/rrdelaney/rrdelaney.github.io)
-
 Uses:
 * React
 * Glamorous
