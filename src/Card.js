@@ -1,35 +1,43 @@
-import glamorous from 'glamorous'
+import styled, { css } from 'styled-components'
 
-export default glamorous.div(props => ({
-  backgroundColor: props.transparent ? '' : 'whitesmoke',
-  color: props.transparent ? 'whitesmoke' : '#444444',
-  borderTop: props.transparent ? '1px solid whitesmoke' : 'none',
-  borderBottom: props.transparent ? '1px solid whitesmoke' : 'none',
-  maxWidth: props.wide ? '600px' : '400px',
-  width: '90vw',
-  padding: props.noBottom ? '1rem 1rem 0' : '1rem',
-  margin: props.center ? '0 auto' : '1rem',
-  boxShadow: props.transparent ? '' : 'rgba(0, 0, 0, .2) 2px 2px 4px 2px',
-  display: props.wide ? 'flex' : 'block',
-  justifyContent: props.wide ? 'space-between' : null,
-  '@media print': {
-    color: '#444444',
-    boxShadow: 'none',
-    borderTop: '1px solid grey',
-    borderLeft: '1px solid grey',
-    borderBottom: 'none',
-    borderRight: 'none',
-    padding: '10px',
-    margin: '10px'
-  }
-}))
+export default styled.div`
+  color: ${props => (props.transparent ? 'whitesmoke' : '#444444')};
+  border-top: ${props => (props.transparent ? '1px solid whitesmoke' : 'none')};
+  border-bottom: ${props =>
+    props.transparent ? '1px solid whitesmoke' : 'none'};
+  max-width: ${props => (props.wide ? '600px' : '400px')};
+  width: 90vw;
+  padding: ${props => (props.noBottom ? '1rem 1rem 0' : '1rem')};
+  margin: ${props => (props.center ? '0 auto' : '1rem')};
+  display: ${props => (props.wide ? 'flex' : 'block')};
 
-export const CardImg = glamorous.div(props => ({
-  width: props.side ? '50%' : 'calc(100% + 2rem)',
-  height: '100%',
-  backgroundSize: 'cover',
-  backgroundImage: `url(${props.src})`,
-  '@media print': {
-    display: 'none'
+  ${props =>
+    !props.transparent &&
+    css`
+    background-color: whitesmoke;
+    box-shadow: rgba(0, 0, 0, .2) 2px 2px 4px 2px;
+  `}
+
+  ${props => props.wide && css`justify-content: space-between`}
+
+  @media print {
+    color: #444444;
+    box-shadow: none;
+    border-top: 1px solid grey;
+    border-left: 1px solid grey;
+    border-bottom: none;
+    border-right: none;
+    padding: 10px;
+    margin: 10px;
   }
-}))
+`
+
+export const CardImg = styled.div`
+  width: {$props => props.side ? '50%' : 'calc(100% + 2rem)'};
+  height: 100%;
+  background-size: cover;
+  background-image: url(${props => props.src});
+  @media print {
+    display: none;
+  }
+`

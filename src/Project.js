@@ -1,12 +1,12 @@
 import React from 'react'
-import glamorous from 'glamorous'
+import styled from 'styled-components'
 import Card, { CardImg } from './Card'
 import { Title, Link, Description } from './Typo'
 
-const ProjectText = glamorous.div({
-  flex: '1',
-  padding: '0 1rem'
-})
+const ProjectText = styled.div`
+  flex: 1;
+  padding: 0 1rem;
+`
 
 export default function Project({ name, url, description, img, swapped }) {
   const text = (

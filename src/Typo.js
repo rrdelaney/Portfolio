@@ -1,74 +1,77 @@
 import React from 'react'
-import glamorous from 'glamorous'
+import styled, { css } from 'styled-components'
 import { emojify } from 'react-emojione'
 
 const common = ({ hidePrint }) =>
-  !hidePrint ? {} : { '@media print': { display: 'none' } }
+  hidePrint && css`@media print { display: none }`
 
-const large = {
-  fontFamily: 'Roboto Mono',
-  fontWeight: 300
-}
+const large = css`
+  font-family: 'Roboto Mono';
+  font-weight: 300;
+`
 
-const small = {
-  fontFamily: 'Cutive Mono',
-  fontWeight: 400
-}
-
-const bodyStyles = {
-  ...common,
-  ...small
-}
+const small = css`
+  font-family: 'Cutive Mono';
+  font-weight: 400;
+`
 
 export const Icon = ({ name }) => <i className="material-icons">{name}</i>
 
-export const Space = glamorous.span({
-  width: '2rem',
-  display: 'inline-block'
-})
+export const Space = styled.span`
+  width: 2rem;
+  display: inline-block;
+`
 
-export const Hero = glamorous.h1(common, large, {
-  fontSize: '52pt',
-  color: 'whitesmoke',
-  width: '100%',
-  textAlign: 'center',
-  '@media print': {
-    color: '#444444'
+export const Hero = styled.h1`
+  ${common}
+  ${large}
+  font-size: 52pt;
+  color: whitesmoke;
+  width: 100%;
+  text-align: center;
+
+  @media print {
+    color: #444444;
   }
-})
+`
 
-export const Heading = glamorous.h1(common, large, {
-  color: 'whitesmoke',
-  textDecoration: 'underline',
-  width: '100%',
-  textAlign: 'center',
-  '@media print': {
-    color: '#444444'
+export const Heading = styled.h1`
+  ${common}
+  ${large}
+  color: whitesmoke;
+  text-decoration: underline;
+  width: 100%;
+  text-align: center;
+  @media print {
+    color: #444444;
   }
-})
+`
 
-export const Title = glamorous.h3(common, large)
+export const Title = styled.h3`${common} ${large}`
 
-export const Subtitle = glamorous.h5(common, large)
+export const Subtitle = styled.h5`${common} ${large}`
 
-export const Body = ({ children, style = {} }) =>
-  <p style={{ ...bodyStyles, ...style }}>
+const BodyContainer = styled.p`${common} ${small}`
+
+export const Body = ({ children }) =>
+  <BodyContainer>
     {React.Children.map(children, c => emojify(`${c}`, { output: 'unicode' }))}
-  </p>
+  </BodyContainer>
 
-export const Code = glamorous.code(common, small, {
-  fontFamily: 'Operator Mono'
-})
+export const Link = styled.a`
+  ${common}
+  ${small}
 
-export const Link = glamorous.a(common, small, props => ({
-  fontFamily: 'Roboto Mono',
-  color: props.white ? 'whitesmoke' : 'cornflowerblue',
-  padding: props.heading ? '0 1rem' : null,
-  '@media print': {
-    color: '#444444'
+  font-family: 'Roboto Mono';
+  color: ${props => (props.white ? 'whitesmoke' : 'cornflowerblue')};
+
+  ${props => props.heading && css`padding: 0 1rem`};
+
+  @media print {
+    color: #444444;
   }
-}))
+`
 
-export const Description = glamorous.div(bodyStyles, {
-  whiteSpace: 'pre-line'
-})
+export const Description = BodyContainer.extend`
+  white-space: pre-line
+`

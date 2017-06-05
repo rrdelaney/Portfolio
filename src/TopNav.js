@@ -1,22 +1,23 @@
 import React, { Component } from 'react'
-import glamorous from 'glamorous'
+import styled from 'styled-components'
 import { Link } from './Typo'
 
-const NavBar = glamorous.div(props => ({
-  zIndex: 999,
-  position: 'fixed',
-  backgroundColor: props.clear ? 'rgba(0, 0, 0, 0)' : 'whitesmoke',
-  height: '3rem',
-  width: '100vw',
-  top: props.isVisible ? 0 : '-3rem',
-  paddingTop: '1rem',
-  marginRight: '-2rem',
-  transition: 'top .5s ease-out, background-color .5s ease-out',
-  '@media print': {
-    position: 'absolute',
-    top: 0
+const NavBar = styled.div`
+  z-index: 999;
+  position: fixed;
+  background-color: ${props =>
+    props.clear ? 'rgba(0, 0, 0, 0)' : 'whitesmoke'};
+  height: 3rem;
+  width: 100vw;
+  top: ${props => (props.isVisible ? 0 : '-3rem')};
+  padding-top: 1rem;
+  margin-right: -2rem;
+  transition: top .5s ease-out, background-color .5s ease-out;
+  @media print {
+    position: absolute;
+    top: 0;
   }
-}))
+`
 
 export default class TopNav extends Component {
   state = {
