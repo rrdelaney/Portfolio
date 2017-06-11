@@ -33,7 +33,7 @@ export default styled.div`
 `
 
 export const CardImg = styled.div`
-  width: {$props => props.side ? '50%' : 'calc(100% + 2rem)'};
+  width: ${props => props.side ? '50%' : 'calc(100% + 2rem)'};
   height: 100%;
   background-size: cover;
   background-image: url(${props => props.src});
