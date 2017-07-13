@@ -30,9 +30,9 @@ export default styled.div`
     border-right: 1px solid #ddd !important;
     border-top: none;
     border-left: none;
-    padding: 5px 10px 0 10px;
-    margin: 5px 10px 0 10px;
-    width: inherit;
+    padding: 5px 10px 0 0;
+    margin: 5px 10px 0 calc(10px + .2rem);
+    width: 100%;
     max-width: none;
     background-color: white;
     display: ${props => (props.hidePrint ? 'none' : 'block')}

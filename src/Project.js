@@ -6,6 +6,10 @@ import { Title, Link, Description } from './Typo'
 const ProjectText = styled.div`
   flex: 1;
   padding: 0 1rem;
+
+  @media print {
+    padding: 0;
+  }
 `
 
 export default function Project({ name, url, description, img, swapped }) {

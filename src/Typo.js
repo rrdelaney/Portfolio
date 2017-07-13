@@ -35,6 +35,7 @@ export const Hero = styled.h1`
 
   @media print {
     color: #444444;
+    margin: .2rem;
   }
 `
 
@@ -45,10 +46,13 @@ export const Heading = styled.h1`
   text-decoration: underline;
   width: 100%;
   text-align: center;
+
   @media print {
     color: #444444;
     text-align: left;
     padding-left: 10px;
+    margin: .2rem;
+    font-size: 18pt;
   }
 `
 
@@ -78,5 +82,17 @@ export const Link = styled.a`
 `
 
 export const Description = BodyContainer.extend`
-  white-space: pre-line
+  white-space: pre-line;
+
+  @media print {
+    font-size: 10pt;
+  }
+`
+
+export const Point = styled.li`
+  ${common}
+  ${small}
+
+  list-style: none;
+  padding-bottom: .5rem;
 `
