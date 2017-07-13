@@ -4,12 +4,14 @@ import { Parallax } from 'react-parallax'
 export default class Background extends React.Component {
   state = {
     bgImg: 'spacex.jpg',
-    isPrinting: false
+    isPrinting: false,
+    hasMounted: false
   }
 
   componentDidMount() {
     this.mediaQuery = window.matchMedia('print')
     this.mediaQuery.addListener(this.onChange)
+    this.setState({ hasMounted: true })
   }
 
   componentWillUnmount() {
@@ -28,6 +30,13 @@ export default class Background extends React.Component {
   render() {
     if (!this.state.bgImg) return null
     if (this.state.isPrinting) return <div>{this.props.children}</div>
+    if (!this.state.hasMounted)
+      return (
+        <div style={{ backgroundImage: `url(${this.state.bgImg})` }}>
+          <div style={{ height: '1px', width: '1px' }} />
+          {this.props.children}
+        </div>
+      )
 
     return (
       <Parallax
