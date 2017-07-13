@@ -3,7 +3,10 @@ import styled, { css } from 'styled-components'
 import { emojify } from 'react-emojione'
 
 const common = ({ hidePrint }) =>
-  hidePrint && css`@media print { display: none }`
+  css`@media print {
+    font-family: 'Open Sans' !important;
+    display: ${props => (hidePrint ? 'none' : null)};
+  }`
 
 const large = css`
   font-family: 'Roboto Mono';
@@ -44,6 +47,8 @@ export const Heading = styled.h1`
   text-align: center;
   @media print {
     color: #444444;
+    text-align: left;
+    padding-left: 10px;
   }
 `
 

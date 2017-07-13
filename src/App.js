@@ -4,8 +4,9 @@ import Background from './Background'
 import TopNav from './TopNav'
 import About from './About'
 import Project from './Project'
+import Education from './Education'
 import GithubRepo from './GithubRepo'
-import Layout from './Layout'
+import Layout, { PrintGrid, PrintGridColumn } from './Layout'
 import { Hero, Heading } from './Typo'
 
 export default class App extends Component {
@@ -37,30 +38,44 @@ export default class App extends Component {
     }
   ]
 
+  education = [
+    'Rensselaer Polytechic Institute',
+    'Computer Systems Engineering & Computer Science',
+    'Class of 2016'
+  ]
+
   render() {
     return (
       <Background ref={c => (this.background = c)}>
         <TopNav links={this.topLinks} />
         <Hero>Ryan Delaney</Hero>
-        <About>{this.aboutContent}</About>
-        <Heading>Projects</Heading>
-        <Layout>
-          <Project
-            name="Framework Press"
-            url="https://framework.press"
-            description={this.frameworkDescription}
-            img="framework.png"
-          />
-        </Layout>
-        <Heading>Open Source</Heading>
-        <Layout>
-          <GithubRepo owner="rrdelaney" name="material-resume" />
-          <GithubRepo owner="rrdelaney" name="ReasonablyTyped" />
-          <GithubRepo owner="rrdelaney" name="bs-loader" />
-          <GithubRepo owner="rrdelaney" name="horizon-devtools" />
-          <GithubRepo owner="rrdelaney" name="HzQL" />
-          <GithubRepo owner="superfeed" name="superfeed" />
-        </Layout>
+        <PrintGrid>
+          <About>{this.aboutContent}</About>
+          <PrintGridColumn col={2}>
+            <Heading>Projects</Heading>
+            <Layout>
+              <Project
+                name="Framework Press"
+                url="https://framework.press"
+                description={this.frameworkDescription}
+                img="framework.png"
+              />
+            </Layout>
+            <Heading>Open Source</Heading>
+            <Layout>
+              <GithubRepo hidePrint owner="rrdelaney" name="material-resume" />
+              <GithubRepo owner="rrdelaney" name="ReasonablyTyped" />
+              <GithubRepo owner="rrdelaney" name="bs-loader" />
+              <GithubRepo hidePrint owner="rrdelaney" name="horizon-devtools" />
+              <GithubRepo hidePrint owner="rrdelaney" name="HzQL" />
+              <GithubRepo hidePrint owner="superfeed" name="superfeed" />
+            </Layout>
+          </PrintGridColumn>
+          <PrintGridColumn col={1}>
+            <Heading>Education</Heading>
+            <Education data={this.education} />
+          </PrintGridColumn>
+        </PrintGrid>
       </Background>
     )
   }

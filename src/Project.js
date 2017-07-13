@@ -9,6 +9,7 @@ const ProjectText = styled.div`
 `
 
 export default function Project({ name, url, description, img, swapped }) {
+  const image = <CardImg side src={img} />
   const text = (
     <ProjectText>
       <Title>
@@ -17,7 +18,6 @@ export default function Project({ name, url, description, img, swapped }) {
       <Description>{description}</Description>
     </ProjectText>
   )
-  const image = <CardImg side src={img} />
 
   return (
     <Card wide>

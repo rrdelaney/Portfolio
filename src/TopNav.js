@@ -13,9 +13,9 @@ const NavBar = styled.div`
   padding-top: 1rem;
   margin-right: -2rem;
   transition: top .5s ease-out, background-color .5s ease-out;
+
   @media print {
-    position: absolute;
-    top: 0;
+    display: none;
   }
 `
 

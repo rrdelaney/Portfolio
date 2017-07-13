@@ -76,14 +76,15 @@ export default class GithubRepo extends React.PureComponent {
   }
 
   render() {
+    const { hidePrint } = this.props
     const { stars, url, language, description } = this.state
 
     return (
-      <Card>
+      <Card hidePrint={hidePrint}>
         <Title>
           <Link href={url}>{this.props.name}</Link>
         </Title>
-        <Subtitle>
+        <Subtitle hidePrint>
           <Icon name="code" /> {language}
           <Space />
           <Icon name="star" /> {stars}

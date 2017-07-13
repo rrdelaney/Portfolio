@@ -16,24 +16,37 @@ export default styled.div`
     css`
     background-color: whitesmoke;
     box-shadow: rgba(0, 0, 0, .2) 2px 2px 4px 2px;
-  `}
 
-  ${props => props.wide && css`justify-content: space-between`}
+    @media print {
+      background-color: white;
+      box-shadow: none;
+    }
+  `}
 
   @media print {
     color: #444444;
     box-shadow: none;
-    border-top: 1px solid grey;
-    border-left: 1px solid grey;
-    border-bottom: none;
-    border-right: none;
-    padding: 10px;
-    margin: 10px;
+    border-bottom: 1px solid #ddd !important;
+    border-right: 1px solid #ddd !important;
+    border-top: none;
+    border-left: none;
+    padding: 5px 10px 0 10px;
+    margin: 5px 10px 0 10px;
+    width: inherit;
+    max-width: none;
+    background-color: white;
+    display: ${props => (props.hidePrint ? 'none' : 'block')}
   }
+
+  ${props =>
+    props.wide &&
+    css`
+    justify-content: space-between;
+  `}
 `
 
 export const CardImg = styled.div`
-  width: ${props => props.side ? '50%' : 'calc(100% + 2rem)'};
+  width: ${props => (props.side ? '50%' : 'calc(100% + 2rem)')};
   height: 100%;
   background-size: cover;
   background-image: url(${props => props.src});

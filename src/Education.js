@@ -2,11 +2,11 @@ import React from 'react'
 import Card from './Card'
 import { Description } from './Typo'
 
-export default function About({ children }) {
+export default function Education({ data }) {
   return (
-    <Card center transparent hidePrint>
+    <Card center transparent>
       <Description>
-        {children}
+        {data.map((content, index) => <li key={index}>{content}</li>)}
       </Description>
     </Card>
   )
