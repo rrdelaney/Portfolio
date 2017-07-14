@@ -52,11 +52,18 @@ export const Heading = styled.h1`
     text-align: left;
     padding-left: 10px;
     margin: .2rem;
-    font-size: 18pt;
+    font-size: 16pt;
   }
 `
 
-export const Title = styled.h3`${common} ${large}`
+export const Title = styled.h3`
+  ${common}
+  ${large}
+
+  @media print {
+    margin-top: .1rem;
+  }
+`
 
 export const Subtitle = styled.h5`${common} ${large}`
 
@@ -95,4 +102,16 @@ export const Point = styled.li`
 
   list-style: none;
   padding-bottom: .5rem;
+`
+
+export const PrintLink = Link.extend`
+  display: none;
+  font-size: 10pt;
+  margin-left: 1rem;
+  text-decoration: none;
+  font-style: italic;
+
+  @media print {
+    display: initial;
+  }
 `

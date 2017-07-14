@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Card, { CardImg } from './Card'
-import { Title, Link, Description } from './Typo'
+import { Title, Link, Description, PrintLink } from './Typo'
 
 const ProjectText = styled.div`
   flex: 1;
@@ -18,6 +18,7 @@ export default function Project({ name, url, description, img, swapped }) {
     <ProjectText>
       <Title>
         <Link href={url}>{name}</Link>
+        <PrintLink href={url}>{url}</PrintLink>
       </Title>
       <Description>{description}</Description>
     </ProjectText>
