@@ -52,7 +52,9 @@ export const Heading = styled.h1`
     text-align: left;
     padding-left: 10px;
     margin: .2rem;
-    font-size: 16pt;
+    font-size: ${props => (props.smallPrint ? '12pt' : '16pt')};
+    text-decoration: none;
+    font-weight: 600;
   }
 `
 
@@ -62,12 +64,21 @@ export const Title = styled.h3`
 
   @media print {
     margin-top: .1rem;
+    margin-bottom: .3rem;
+    font-size: 12pt;
   }
 `
 
 export const Subtitle = styled.h5`${common} ${large}`
 
-const BodyContainer = styled.p`${common} ${small}`
+const BodyContainer = styled.p`
+  ${common}
+  ${small}
+
+  @media print {
+    font-size: 10pt;
+  }
+`
 
 export const Body = ({ children }) =>
   <BodyContainer>
@@ -85,6 +96,7 @@ export const Link = styled.a`
 
   @media print {
     color: #444444;
+    text-decoration: none;
   }
 `
 
@@ -93,6 +105,7 @@ export const Description = BodyContainer.extend`
 
   @media print {
     font-size: 10pt;
+    margin-top: .1rem;
   }
 `
 

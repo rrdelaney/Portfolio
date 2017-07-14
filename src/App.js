@@ -44,6 +44,8 @@ export default class App extends Component {
     'Class of 2016'
   ]
 
+  achievements = ['Some hackathon', 'Honor roll?']
+
   render() {
     return (
       <Background ref={c => (this.background = c)}>
@@ -72,8 +74,10 @@ export default class App extends Component {
             </Layout>
           </PrintGridColumn>
           <PrintGridColumn col={1}>
-            <Heading>Education</Heading>
+            <Heading smallPrint>Education</Heading>
             <Education data={this.education} />
+            <Heading smallPrint>Achievements</Heading>
+            <Education data={this.achievements} />
           </PrintGridColumn>
         </PrintGrid>
       </Background>
