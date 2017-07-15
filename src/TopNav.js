@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Link } from './Typo'
+import { Icon, Link, PrintLink } from './Typo'
 
 const NavBar = styled.div`
   z-index: 999;
@@ -15,7 +15,15 @@ const NavBar = styled.div`
   transition: top .5s ease-out, background-color .5s ease-out;
 
   @media print {
-    display: none;
+    position: inherit;
+    background-color: rgba(0, 0, 0, 0);
+    transition: none;
+    top: 0;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: .5rem;
+    padding-top: .2rem;
+    height: auto;
+    text-align: center;
   }
 `
 
@@ -46,15 +54,24 @@ export default class TopNav extends Component {
 
   render() {
     const links = this.props.links.filter(l => !l.right).map(l =>
-      <Link
-        key={l.text}
-        heading
-        white={this.state.isTop}
-        href={l.href}
-        onClick={l.onClick}
-      >
-        {l.text}
-      </Link>
+      <span key={l.text || l.printText}>
+        {l.text &&
+          <Link
+            hidePrint
+            heading
+            white={this.state.isTop}
+            href={l.href}
+            onClick={l.onClick}
+          >
+            {l.text}
+          </Link>}
+        {l.printText &&
+          <PrintLink href={l.href} style={{ fontStyle: 'normal' }}>
+            <Icon name={l.printIcon} />
+            &nbsp;
+            {l.printText}
+          </PrintLink>}
+      </span>
     )
 
     const rightLinks = this.props.links.filter(l => !!l.right).map(l =>

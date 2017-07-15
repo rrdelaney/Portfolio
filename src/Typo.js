@@ -18,11 +18,20 @@ const small = css`
   font-weight: 400;
 `
 
-export const Icon = ({ name }) => <i className="material-icons">{name}</i>
+export const Icon = ({ dev, name }) =>
+  dev || name.startsWith('dev-')
+    ? <i className={`devicon-${name.replace('dev-', '')}`} />
+    : <i className="material-icons">{name}</i>
 
 export const Space = styled.span`
   width: 2rem;
   display: inline-block;
+`
+
+export const Break = styled.br`
+  ${common}
+
+  height: 3rem;
 `
 
 export const Hero = styled.h1`
@@ -90,14 +99,19 @@ export const Link = styled.a`
   ${small}
 
   font-family: 'Roboto Mono';
-  color: ${props => (props.white ? 'whitesmoke' : 'cornflowerblue')};
 
-  ${props => props.heading && css`padding: 0 1rem`};
+  color: ${props => (props.white ? 'whitesmoke' : 'cornflowerblue')};
 
   @media print {
     color: #444444;
     text-decoration: none;
   }
+
+  &:hover {
+    color: hotpink;
+  }
+
+  ${props => props.heading && css`padding: 0 1rem`};
 `
 
 export const Description = BodyContainer.extend`

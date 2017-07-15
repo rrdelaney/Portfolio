@@ -12,6 +12,14 @@ export default styled.div`
   }
 `
 
+export const Box = styled.div`
+  padding: 0 1rem;
+
+  @media print {
+    padding: 0
+  }
+`
+
 export const PrintGrid = styled.div`
   @media print {
     display: grid;

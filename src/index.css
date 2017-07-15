@@ -7,3 +7,7 @@ body {
 .material-icons {
   vertical-align: bottom;
 }
+
+[class*=" devicon-"], [class^=devicon-] {
+  font-size: 14pt;
+}

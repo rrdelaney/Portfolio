@@ -6,8 +6,8 @@ import About from './About'
 import Project from './Project'
 import Education from './Education'
 import GithubRepo from './GithubRepo'
-import Layout, { PrintGrid, PrintGridColumn } from './Layout'
-import { Hero, Heading } from './Typo'
+import Layout, { Box, PrintGrid, PrintGridColumn } from './Layout'
+import { Hero, Heading, Break } from './Typo'
 
 export default class App extends Component {
   aboutContent = dedent`
@@ -23,8 +23,26 @@ export default class App extends Component {
   `
 
   topLinks = [
-    { text: 'GitHub', href: 'https://github.com/rrdelaney' },
-    { text: 'Twitter', href: 'https://twitter.com/_rrdelaney' },
+    {
+      printText: '516-281-6378',
+      printIcon: 'phone'
+    },
+    {
+      text: 'GitHub',
+      printIcon: 'dev-github-plain',
+      printText: 'rrdelaney',
+      href: 'https://github.com/rrdelaney'
+    },
+    {
+      text: 'Twitter',
+      printIcon: 'dev-twitter-plain',
+      printText: '_rrdelaney',
+      href: 'https://twitter.com/_rrdelaney'
+    },
+    {
+      printText: 'rrdelaney@outlook.com',
+      printIcon: 'email'
+    },
     {
       text: 'Résumé',
       href: '',
@@ -44,13 +62,18 @@ export default class App extends Component {
     'Class of 2016'
   ]
 
-  achievements = ['Some hackathon', 'Honor roll?']
+  achievements = [
+    '2nd @ Facebook Global Hackathon Fall 2015',
+    'HackMIT Finalist Fall 2015',
+    'Best UI @ HackMIT Fall 2015',
+    'Rensselaer Medal Award'
+  ]
 
   render() {
     return (
       <Background ref={c => (this.background = c)}>
-        <TopNav links={this.topLinks} />
         <Hero>Ryan Delaney</Hero>
+        <TopNav links={this.topLinks} />
         <PrintGrid>
           <About>{this.aboutContent}</About>
           <PrintGridColumn col={2}>
@@ -74,12 +97,19 @@ export default class App extends Component {
             </Layout>
           </PrintGridColumn>
           <PrintGridColumn col={1}>
-            <Heading smallPrint>Education</Heading>
-            <Education data={this.education} />
-            <Heading smallPrint>Achievements</Heading>
-            <Education data={this.achievements} />
+            <Layout>
+              <Box>
+                <Heading smallPrint>Education</Heading>
+                <Education data={this.education} />
+              </Box>
+              <Box>
+                <Heading smallPrint>Awards</Heading>
+                <Education data={this.achievements} />
+              </Box>
+            </Layout>
           </PrintGridColumn>
         </PrintGrid>
+        <Break hidePrint />
       </Background>
     )
   }
