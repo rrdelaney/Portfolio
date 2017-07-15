@@ -127,8 +127,9 @@ export const Point = styled.li`
   ${common}
   ${small}
 
-  list-style: none;
+  list-style: ${props => (props.dotted ? 'disc' : 'none')};
   padding-bottom: .5rem;
+  padding-left: ${props => (props.dotted ? '1rem' : '0')}
 `
 
 export const PrintLink = Link.extend`

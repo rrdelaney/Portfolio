@@ -4,7 +4,8 @@ import { Title, Subtitle, Description, Point } from './Typo'
 
 const Position = Subtitle.extend`
   display: inline;
-  font-size: 10pt;
+  font-size: 9pt;
+  font-weight: bold;
 `
 
 const ConnectedCard = Card.extend`
@@ -67,15 +68,26 @@ const PrintDescription = Description.extend`
   }
 `
 
+const PrintTime = Position.extend`
+  display: none;
+
+  @media print {
+    display: inline;
+  }
+`
+
 export default function Work({ company, position, time, data }) {
   return (
     <ConnectedCard center wide>
       <Title data-time={time}>
-        {company} <Position>{position}</Position>
+        {company} -
+        {' '}<Position>{position} <PrintTime>({time})</PrintTime></Position>
       </Title>
       <PrintDescription>
         {data &&
-          data.map((content, index) => <Point key={index}>{content}</Point>)}
+          data.map((content, index) =>
+            <Point key={index} dotted>{content}</Point>
+          )}
       </PrintDescription>
     </ConnectedCard>
   )

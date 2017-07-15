@@ -70,6 +70,13 @@ export default class App extends Component {
     'Rensselaer Medal Award'
   ]
 
+  datto = [
+    'Worked on devices that take image-based backups of servers',
+    'Developed on an existing codebase to add new features and fix bugs',
+    'Wrote unit tests and negative tests for all added features',
+    'Worked in a scrum environment and used agile methods to complete goals'
+  ]
+
   render() {
     return (
       <Background ref={c => (this.background = c)}>
@@ -88,6 +95,7 @@ export default class App extends Component {
               company="Datto"
               position="Software Engineering Intern"
               time="Summer 2015"
+              data={this.datto}
             />
             <Heading>Projects</Heading>
             <Layout>
