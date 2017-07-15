@@ -5,6 +5,7 @@ import TopNav from './TopNav'
 import About from './About'
 import Project from './Project'
 import Education from './Education'
+import Work from './Work'
 import GithubRepo from './GithubRepo'
 import Layout, { Box, PrintGrid, PrintGridColumn } from './Layout'
 import { Hero, Heading, Break } from './Typo'
@@ -77,6 +78,17 @@ export default class App extends Component {
         <PrintGrid>
           <About>{this.aboutContent}</About>
           <PrintGridColumn col={2}>
+            <Heading>Work</Heading>
+            <Work
+              company="Microsoft"
+              position="Software Engineer"
+              time="August 2016 - Present"
+            />
+            <Work
+              company="Datto"
+              position="Software Engineering Intern"
+              time="Summer 2015"
+            />
             <Heading>Projects</Heading>
             <Layout>
               <Project
