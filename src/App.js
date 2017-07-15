@@ -77,6 +77,12 @@ export default class App extends Component {
     'Worked in a scrum environment and used agile methods to complete goals'
   ]
 
+  union = [
+    'Worked on a new Club Management System for the Student Union',
+    'Worked on a team with other developers managing workflow with Git',
+    'Designed a responsive web app in collaboration with other developers to complete features and fix bugs'
+  ]
+
   render() {
     return (
       <Background ref={c => (this.background = c)}>
@@ -96,6 +102,12 @@ export default class App extends Component {
               position="Software Engineering Intern"
               time="Summer 2015"
               data={this.datto}
+            />
+            <Work
+              company="Rensselaer Union"
+              position="Developer"
+              time="Fall 2013 - Spring 2016"
+              data={this.union}
             />
             <Heading>Projects</Heading>
             <Layout>

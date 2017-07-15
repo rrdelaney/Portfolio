@@ -128,7 +128,7 @@ export const Point = styled.li`
   ${small}
 
   list-style: ${props => (props.dotted ? 'disc' : 'none')};
-  padding-bottom: .5rem;
+  padding-bottom: ${props => (props.dotted ? '.1rem' : '.5rem')};
   padding-left: ${props => (props.dotted ? '1rem' : '0')}
 `
 

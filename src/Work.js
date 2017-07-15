@@ -80,7 +80,7 @@ export default function Work({ company, position, time, data }) {
   return (
     <ConnectedCard center wide>
       <Title data-time={time}>
-        {company} -
+        {company}
         {' '}<Position>{position} <PrintTime>({time})</PrintTime></Position>
       </Title>
       <PrintDescription>
