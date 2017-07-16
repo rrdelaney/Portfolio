@@ -1,6 +1,23 @@
 import React from 'react'
 import Card from './Card'
-import { Title, Body, Subtitle, Icon, Space, Link, PrintLink } from './Typo'
+import {
+  Title,
+  Body,
+  Description,
+  Subtitle,
+  Icon,
+  Space,
+  Link,
+  PrintLink
+} from './Typo'
+
+const PrintDescription = Description.extend`
+  display: none;
+
+  @media print {
+    display: block;
+  }
+`
 
 const getRepo = async (owner, name) => {
   const cacheRepoName = `repo:${owner}/${name}`
@@ -76,21 +93,31 @@ export default class GithubRepo extends React.PureComponent {
   }
 
   render() {
-    const { hidePrint } = this.props
+    const { hidePrint, printDescription } = this.props
     const { stars, url, language, description } = this.state
 
     return (
       <Card hidePrint={hidePrint}>
         <Title>
-          <Link href={url}>{this.props.name}</Link>
-          <PrintLink href={url}>{url}</PrintLink>
+          <Link href={url}>
+            {this.props.name}
+          </Link>
+          <PrintLink href={url}>
+            {url}
+          </PrintLink>
         </Title>
         <Subtitle hidePrint>
           <Icon name="code" /> {language}
           <Space />
           <Icon name="star" /> {stars}
         </Subtitle>
-        <Body>{description}</Body>
+        <Body hidePrint={!!printDescription}>
+          {description}
+        </Body>
+        {printDescription &&
+          <PrintDescription>
+            {printDescription}
+          </PrintDescription>}
       </Card>
     )
   }

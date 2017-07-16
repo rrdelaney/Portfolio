@@ -23,6 +23,12 @@ export default class App extends Component {
     Being developed with React, Firebase, and Google APIs.
   `
 
+  reasonablyTypedDescription = dedent`
+    A Flow and TypeScript library definition compiler for Reason and BuckleScript. It takes a module type definition and turns it into something types for Reason.
+
+    Written in Reason and compiled to a native binary or JavaScript.
+  `
+
   topLinks = [
     {
       printText: '516-281-6378',
@@ -145,7 +151,11 @@ export default class App extends Component {
             <Heading>Open Source</Heading>
             <Layout>
               <GithubRepo hidePrint owner="rrdelaney" name="material-resume" />
-              <GithubRepo owner="rrdelaney" name="ReasonablyTyped" />
+              <GithubRepo
+                owner="rrdelaney"
+                name="ReasonablyTyped"
+                printDescription={this.reasonablyTypedDescription}
+              />
               <GithubRepo owner="rrdelaney" name="bs-loader" />
               <GithubRepo hidePrint owner="rrdelaney" name="horizon-devtools" />
               <GithubRepo hidePrint owner="rrdelaney" name="HzQL" />

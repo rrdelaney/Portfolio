@@ -21,23 +21,19 @@ const small = css`
 export const Icon = ({ dev, name }) =>
   dev || name.startsWith('dev-')
     ? <i className={`devicon-${name.replace('dev-', '')}`} />
-    : <i className="material-icons">{name}</i>
+    : <i className="material-icons">
+        {name}
+      </i>
 
 export const Space = styled.span`
   width: 2rem;
   display: inline-block;
 `
 
-export const Break = styled.br`
-  ${common}
-
-  height: 3rem;
-`
+export const Break = styled.br`${common} height: 3rem;`
 
 export const Hero = styled.h1`
-  ${common}
-  ${large}
-  font-size: 52pt;
+  ${common} ${large} font-size: 52pt;
   color: whitesmoke;
   width: 100%;
   text-align: center;
@@ -49,9 +45,7 @@ export const Hero = styled.h1`
 `
 
 export const Heading = styled.h1`
-  ${common}
-  ${large}
-  color: whitesmoke;
+  ${common} ${large} color: whitesmoke;
   text-decoration: underline;
   width: 100%;
   text-align: center;
@@ -68,37 +62,28 @@ export const Heading = styled.h1`
 `
 
 export const Title = styled.h3`
-  ${common}
-  ${large}
-
-  @media print {
+  ${common} ${large} @media print {
     margin-top: .1rem;
     margin-bottom: .3rem;
     font-size: 12pt;
   }
 `
 
-export const Subtitle = styled.h5`${common} ${large}`
+export const Subtitle = styled.h5`${common} ${large};`
 
-const BodyContainer = styled.p`
-  ${common}
-  ${small}
-
-  @media print {
+export const BodyContainer = styled.p`
+  ${common} ${small} @media print {
     font-size: 10pt;
   }
 `
 
-export const Body = ({ children }) =>
-  <BodyContainer>
+export const Body = ({ hidePrint, children }) =>
+  <BodyContainer hidePrint={hidePrint}>
     {React.Children.map(children, c => emojify(`${c}`, { output: 'unicode' }))}
   </BodyContainer>
 
 export const Link = styled.a`
-  ${common}
-  ${small}
-
-  font-family: 'Roboto Mono';
+  ${common} ${small} font-family: 'Roboto Mono';
 
   color: ${props => (props.white ? 'whitesmoke' : 'cornflowerblue')};
 
@@ -124,12 +109,9 @@ export const Description = BodyContainer.extend`
 `
 
 export const Point = styled.li`
-  ${common}
-  ${small}
-
-  list-style: ${props => (props.dotted ? 'disc' : 'none')};
+  ${common} ${small} list-style: ${props => (props.dotted ? 'disc' : 'none')};
   padding-bottom: ${props => (props.dotted ? '.1rem' : '.5rem')};
-  padding-left: ${props => (props.dotted ? '1rem' : '0')}
+  padding-left: ${props => (props.dotted ? '1rem' : '0')};
 `
 
 export const PrintLink = Link.extend`
