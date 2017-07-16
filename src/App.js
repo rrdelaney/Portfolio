@@ -73,21 +73,29 @@ export default class App extends Component {
 
   tech = {
     Interests: ['Frontend', 'Compilers', 'Developer tools'],
-    Languages: ['JavaScript', 'Scala', 'Reason'],
-    Tech: ['React', 'GraphQL', 'Angular', 'Firebase']
+    Languages: ['JavaScript', 'Reason', 'Scala', 'Python', 'PHP'],
+    Frameworks: ['React', 'GraphQL', 'Angular', 'Django'],
+    Databases: ['MongoDB', 'Postgres', 'Firebase']
   }
 
+  microsoft = [
+    'Working on CMS for Office documentation',
+    'Leading frontend migration to React and GraphQL',
+    'Work across stack, using React and GraphQL API hitting legacy DB',
+    "Contribute to other team's libraries we depend on"
+  ]
+
   datto = [
-    'Worked on devices that take image-based backups of servers',
-    'Developed on an existing codebase to add new features and fix bugs',
+    'Worked on web app managing fleet of backup devices',
+    'Used an existing codebase to add new features and fix bugs',
     'Wrote unit tests and negative tests for all added features',
-    'Worked in a scrum environment and used agile methods to complete goals'
+    'Worked with PHP, Linux, and Symfony framework'
   ]
 
   union = [
     'Worked on a new Club Management System for the Student Union',
-    'Worked on a team with other developers managing workflow with Git',
-    'Designed a responsive web app in collaboration with other developers to complete features and fix bugs'
+    'Wrote full-stack features, from frontend to database',
+    'Used Python, Postgres, and Django'
   ]
 
   render() {
@@ -105,6 +113,7 @@ export default class App extends Component {
               company="Microsoft"
               position="Software Engineer"
               time="August 2016 - Present"
+              data={this.microsoft}
             />
             <Work
               company="Datto"

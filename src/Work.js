@@ -16,7 +16,10 @@ const ConnectedCard = Card.extend`
   box-shadow: rgba(0, 0, 0, .2) 5px 5px 4px 2px;
 
   @media print {
-    margin: 5px 10px 0 calc(10px + .2rem);
+    margin: 5px 0 0 0;
+    width: calc(100% - 20px - .4rem);
+    padding-left: calc(10px + .2rem);
+    padding-right: 0;
     box-shadow: none;
     display: ${props => (props.hidePrint ? 'none' : 'block')};
   }
