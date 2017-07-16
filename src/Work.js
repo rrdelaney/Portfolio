@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 import Card from './Card'
 import { Title, Subtitle, Description, Point } from './Typo'
 
@@ -60,7 +61,8 @@ const ConnectedCard = Card.extend`
   }
 `
 
-const PrintDescription = Description.extend`
+const PrintList = styled.ul`
+  margin-top: 0;
   display: none;
 
   @media print {
@@ -80,15 +82,21 @@ export default function Work({ company, position, time, data }) {
   return (
     <ConnectedCard center wide>
       <Title data-time={time}>
-        {company}
-        {' '}<Position>{position} <PrintTime>({time})</PrintTime></Position>
+        {company}{' '}
+        <Position>
+          {position} <PrintTime>({time})</PrintTime>
+        </Position>
       </Title>
-      <PrintDescription>
-        {data &&
-          data.map((content, index) =>
-            <Point key={index} dotted>{content}</Point>
-          )}
-      </PrintDescription>
+      <Description>
+        <PrintList>
+          {data &&
+            data.map((content, index) =>
+              <Point key={index} dotted>
+                {content}
+              </Point>
+            )}
+        </PrintList>
+      </Description>
     </ConnectedCard>
   )
 }
