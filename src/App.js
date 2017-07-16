@@ -4,7 +4,7 @@ import Background from './Background'
 import TopNav from './TopNav'
 import About from './About'
 import Project from './Project'
-import Education from './Education'
+import DataCard from './DataCard'
 import Work from './Work'
 import GithubRepo from './GithubRepo'
 import Layout, { Box, PrintGrid, PrintGridColumn } from './Layout'
@@ -59,7 +59,8 @@ export default class App extends Component {
 
   education = [
     'Rensselaer Polytechic Institute',
-    'Computer Systems Engineering & Computer Science',
+    'Computer Science',
+    'Computer Systems Engineering',
     'Class of 2016'
   ]
 
@@ -69,6 +70,12 @@ export default class App extends Component {
     'Best UI @ HackMIT Fall 2015',
     'Rensselaer Medal Award'
   ]
+
+  tech = {
+    Interests: ['Frontend', 'Compilers', 'Developer tools'],
+    Languages: ['JavaScript', 'Scala', 'Reason'],
+    Tech: ['React', 'GraphQL', 'Angular', 'Firebase']
+  }
 
   datto = [
     'Worked on devices that take image-based backups of servers',
@@ -89,7 +96,9 @@ export default class App extends Component {
         <Hero>Ryan Delaney</Hero>
         <TopNav links={this.topLinks} />
         <PrintGrid>
-          <About>{this.aboutContent}</About>
+          <About>
+            {this.aboutContent}
+          </About>
           <PrintGridColumn col={2}>
             <Heading>Work</Heading>
             <Work
@@ -108,6 +117,12 @@ export default class App extends Component {
               position="Developer"
               time="Fall 2013 - Spring 2016"
               data={this.union}
+            />
+            <Work
+              hidePrint
+              company="Power Management Concepts"
+              position="Intern"
+              time="Summer 2014"
             />
             <Heading>Projects</Heading>
             <Layout>
@@ -132,13 +147,15 @@ export default class App extends Component {
             <Layout>
               <Box>
                 <Heading smallPrint>Education</Heading>
-                <Education data={this.education} />
+                <DataCard data={this.education} />
               </Box>
               <Box>
                 <Heading smallPrint>Awards</Heading>
-                <Education data={this.achievements} />
+                <DataCard data={this.achievements} />
               </Box>
             </Layout>
+            <Heading smallPrint>Tech</Heading>
+            <DataCard data={this.tech} />
           </PrintGridColumn>
         </PrintGrid>
         <Break hidePrint />

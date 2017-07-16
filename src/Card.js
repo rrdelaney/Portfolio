@@ -21,9 +21,7 @@ export default styled.div`
       background-color: white;
       box-shadow: none;
     }
-  `}
-
-  @media print {
+  `} @media print {
     color: #444444;
     box-shadow: none;
     border-bottom: 1px solid #ddd !important;
@@ -35,14 +33,14 @@ export default styled.div`
     width: 100%;
     max-width: none;
     background-color: white;
-    display: ${props => (props.hidePrint ? 'none' : 'block')}
+    display: ${props => (props.hidePrint ? 'none' : 'block')};
   }
 
   ${props =>
     props.wide &&
     css`
     justify-content: space-between;
-  `}
+  `};
 `
 
 export const CardImg = styled.div`

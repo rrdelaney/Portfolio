@@ -18,6 +18,7 @@ const ConnectedCard = Card.extend`
   @media print {
     margin: 5px 10px 0 calc(10px + .2rem);
     box-shadow: none;
+    display: ${props => (props.hidePrint ? 'none' : 'block')};
   }
 
   &::before {
@@ -78,9 +79,9 @@ const PrintTime = Position.extend`
   }
 `
 
-export default function Work({ company, position, time, data }) {
+export default function Work({ company, position, time, data, hidePrint }) {
   return (
-    <ConnectedCard center wide>
+    <ConnectedCard center wide hidePrint={hidePrint}>
       <Title data-time={time}>
         {company}{' '}
         <Position>
