@@ -29,6 +29,10 @@ export default class App extends Component {
     Written in Reason and compiled to a native binary or JavaScript.
   `
 
+  incyncDescription = dedent`
+    Project for Hack MIT Fall 2015. An app for syncing presentations with your group! Finalists at Hack MIT, GE Best UX Prize, and Facebook award winners.
+  `
+
   topLinks = [
     {
       printText: '516-281-6378',
@@ -156,10 +160,14 @@ export default class App extends Component {
                 name="ReasonablyTyped"
                 printDescription={this.reasonablyTypedDescription}
               />
-              <GithubRepo owner="rrdelaney" name="bs-loader" />
+              <GithubRepo hidePrint owner="rrdelaney" name="bs-loader" />
               <GithubRepo hidePrint owner="rrdelaney" name="horizon-devtools" />
               <GithubRepo hidePrint owner="rrdelaney" name="HzQL" />
-              <GithubRepo hidePrint owner="superfeed" name="superfeed" />
+              <GithubRepo
+                owner="USA-Hacks"
+                name="inCync-Front"
+                printDescription={this.incyncDescription}
+              />
             </Layout>
           </PrintGridColumn>
           <PrintGridColumn col={1}>
