@@ -4,7 +4,7 @@
 
 Uses:
 * React
-* Glamorous
+* styled-components
 
 ## Developing
 
@@ -22,12 +22,7 @@ yarn start
 
 This will start the app with hot-reloading enabled.
 
-The site is developed with the StandardJS styleguide.
-Lint with:
-
-```
-yarn lint
-```
+The site is developed with prettier.
 
 ## Building
 
