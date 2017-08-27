@@ -160,14 +160,18 @@ export default class App extends Component {
                 name="ReasonablyTyped"
                 printDescription={this.reasonablyTypedDescription}
               />
-              <GithubRepo hidePrint owner="rrdelaney" name="bs-loader" />
+              <GithubRepo
+                hidePrint
+                owner="reasonml-community"
+                name="reason-scripts"
+              />
+              <GithubRepo
+                hidePrint
+                owner="reasonml-community"
+                name="bs-loader"
+              />
               <GithubRepo hidePrint owner="rrdelaney" name="horizon-devtools" />
               <GithubRepo hidePrint owner="rrdelaney" name="HzQL" />
-              <GithubRepo
-                owner="USA-Hacks"
-                name="inCync-Front"
-                printDescription={this.incyncDescription}
-              />
             </Layout>
           </PrintGridColumn>
           <PrintGridColumn col={1}>
