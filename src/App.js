@@ -12,7 +12,7 @@ import { Hero, Heading, Break } from './Typo'
 
 export default class App extends Component {
   aboutContent = dedent`
-    Developer currently @ Microsoft
+    Developer currently @ Google
 
     Insterested in frontend development, programming languages, and improving developer experience
   `
@@ -88,6 +88,8 @@ export default class App extends Component {
     Databases: ['MongoDB', 'Postgres', 'Firebase']
   }
 
+  google = []
+
   microsoft = [
     'Working on CMS for Office documentation',
     'Leading frontend migration to React and GraphQL',
@@ -120,9 +122,15 @@ export default class App extends Component {
           <PrintGridColumn col={2}>
             <Heading>Work</Heading>
             <Work
+              company="Google"
+              position="Software Engineer"
+              time="September 2017 - Present"
+              data={this.google}
+            />
+            <Work
               company="Microsoft"
               position="Software Engineer"
-              time="August 2016 - Present"
+              time="August 2016 - September 2017"
               data={this.microsoft}
             />
             <Work
@@ -136,12 +144,6 @@ export default class App extends Component {
               position="Developer"
               time="Fall 2013 - Spring 2016"
               data={this.union}
-            />
-            <Work
-              hidePrint
-              company="Power Management Concepts"
-              position="Intern"
-              time="Summer 2014"
             />
             <Heading>Projects</Heading>
             <Layout>
