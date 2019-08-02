@@ -1,3 +1,4 @@
 --module commonjs
---outDir build_node
 --jsx react
+--noEmit false
+--outDir build_node
