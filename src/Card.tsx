@@ -1,6 +1,14 @@
 import styled, { css } from 'styled-components'
 
-export default styled.div`
+export interface CardProps {
+  transparent?: boolean
+  wide?: boolean
+  noBottom?: boolean
+  center?: boolean
+  hidePrint?: boolean
+}
+
+export const Card = styled.div<CardProps>`
   color: ${props => (props.transparent ? 'whitesmoke' : '#444444')};
   border-top: ${props => (props.transparent ? '1px solid whitesmoke' : 'none')};
   border-bottom: ${props =>
@@ -14,14 +22,14 @@ export default styled.div`
   ${props =>
     !props.transparent &&
     css`
-    background-color: whitesmoke;
-    box-shadow: rgba(0, 0, 0, .2) 2px 2px 4px 2px;
+      background-color: whitesmoke;
+      box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 4px 2px;
 
-    @media print {
-      background-color: white;
-      box-shadow: none;
-    }
-  `} @media print {
+      @media print {
+        background-color: white;
+        box-shadow: none;
+      }
+    `} @media print {
     color: #444444;
     box-shadow: none;
     border-bottom: 1px solid #ddd !important;
@@ -29,7 +37,7 @@ export default styled.div`
     border-top: none;
     border-left: none;
     padding: 5px 10px 0 0;
-    margin: 5px 10px 0 calc(10px + .2rem);
+    margin: 5px 10px 0 calc(10px + 0.2rem);
     width: 100%;
     max-width: none;
     background-color: white;
@@ -39,11 +47,16 @@ export default styled.div`
   ${props =>
     props.wide &&
     css`
-    justify-content: space-between;
-  `};
+      justify-content: space-between;
+    `};
 `
 
-export const CardImg = styled.div`
+export interface CardImgProps {
+  side: boolean
+  src: string
+}
+
+export const CardImg = styled.div<CardImgProps>`
   width: ${props => (props.side ? '50%' : 'calc(100% + 2rem)')};
   height: 100%;
   background-size: cover;

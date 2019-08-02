@@ -1,31 +1,31 @@
-import React from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
-import Card from './Card'
+import { Card } from './Card'
 import { Title, Subtitle, Description, Point } from './Typo'
 
-const Position = Subtitle.extend`
+const Position = styled(Subtitle)`
   display: inline;
   font-size: 9pt;
   font-weight: bold;
 `
 
-const ConnectedCard = Card.extend`
+const ConnectedCard = styled(Card)`
   position: relative;
   margin-top: 0;
   margin-bottom: 0;
-  box-shadow: rgba(0, 0, 0, .2) 5px 5px 4px 2px;
+  box-shadow: rgba(0, 0, 0, 0.2) 5px 5px 4px 2px;
 
   @media print {
     margin: 5px 0 0 0;
-    width: calc(100% - 20px - .4rem);
-    padding-left: calc(10px + .2rem);
+    width: calc(100% - 20px - 0.4rem);
+    padding-left: calc(10px + 0.2rem);
     padding-right: 0;
     box-shadow: none;
     display: ${props => (props.hidePrint ? 'none' : 'block')};
   }
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 36px;
@@ -44,13 +44,13 @@ const ConnectedCard = Card.extend`
     color: teal;
     max-width: 0px;
     overflow: hidden;
-    padding: 0 .4rem;
-    margin: 0 .85rem -.4rem;
+    padding: 0 0.4rem;
+    margin: 0 0.85rem -0.4rem;
     background-color: teal;
     display: inline-block;
     border: 1px solid teal;
     border-radius: 100px;
-    transition: max-width 1s, color .2s;
+    transition: max-width 1s, color 0.2s;
     text-overflow: clip;
     white-space: nowrap;
 
@@ -74,7 +74,7 @@ const PrintList = styled.ul`
   }
 `
 
-const PrintTime = Position.extend`
+const PrintTime = styled(Position)`
   display: none;
 
   @media print {
@@ -82,7 +82,15 @@ const PrintTime = Position.extend`
   }
 `
 
-export default function Work({ company, position, time, data, hidePrint }) {
+export interface WorkProps {
+  company: string
+  position: string
+  time: string
+  data: string[]
+  hidePrint?: boolean
+}
+
+export function Work({ company, position, time, data, hidePrint }: WorkProps) {
   return (
     <ConnectedCard center wide hidePrint={hidePrint}>
       <Title data-time={time}>
@@ -94,11 +102,11 @@ export default function Work({ company, position, time, data, hidePrint }) {
       <Description>
         <PrintList>
           {data &&
-            data.map((content, index) =>
+            data.map((content, index) => (
               <Point key={index} dotted>
                 {content}
               </Point>
-            )}
+            ))}
         </PrintList>
       </Description>
     </ConnectedCard>

@@ -1,5 +1,6 @@
-import React from 'react'
-import Card from './Card'
+import * as React from 'react'
+import styled from 'styled-components'
+import { Card } from './Card'
 import {
   Title,
   Body,
@@ -11,7 +12,7 @@ import {
   PrintLink
 } from './Typo'
 
-const PrintDescription = Description.extend`
+const PrintDescription = styled(Description)`
   display: none;
 
   @media print {
@@ -19,7 +20,14 @@ const PrintDescription = Description.extend`
   }
 `
 
-const getRepo = async (owner, name) => {
+interface RepoData {
+  stargazers_count: number
+  html_url: string
+  description: string
+  language: string
+}
+
+async function getRepo(owner: string, name: string) {
   const cacheRepoName = `repo:${owner}/${name}`
   const cacheETagName = `etag:${owner}/${name}`
   const cachedETag = localStorage[cacheETagName]
@@ -39,18 +47,35 @@ const getRepo = async (owner, name) => {
     localStorage[cacheRepoName] = JSON.stringify(newRepo)
   }
 
-  return JSON.parse(localStorage[cacheRepoName])
+  return JSON.parse(localStorage[cacheRepoName]) as RepoData
 }
 
-const tryCache = (owner, name) => {
+function tryCache(owner: string, name: string) {
   const cacheRepoName = `repo:${owner}/${name}`
   const repoData = localStorage[cacheRepoName]
 
-  return repoData && JSON.parse(repoData)
+  return repoData ? (JSON.parse(repoData) as RepoData) : undefined
 }
 
-export default class GithubRepo extends React.PureComponent {
-  state = {
+export interface GithubRepoProps {
+  owner: string
+  name: string
+  hidePrint?: boolean
+  printDescription?: string
+}
+
+export interface GithubRepoState {
+  stars: number | null
+  url: string | null
+  description: string | null
+  language: string | null
+}
+
+export class GithubRepo extends React.PureComponent<
+  GithubRepoProps,
+  GithubRepoState
+> {
+  state: GithubRepoState = {
     stars: null,
     url: null,
     description: null,
@@ -99,25 +124,18 @@ export default class GithubRepo extends React.PureComponent {
     return (
       <Card hidePrint={hidePrint}>
         <Title>
-          <Link href={url}>
-            {this.props.name}
-          </Link>
-          <PrintLink href={url}>
-            {url}
-          </PrintLink>
+          <Link href={url!}>{this.props.name}</Link>
+          <PrintLink href={url!}>{url}</PrintLink>
         </Title>
         <Subtitle hidePrint>
           <Icon name="code" /> {language}
           <Space />
           <Icon name="star" /> {stars}
         </Subtitle>
-        <Body hidePrint={!!printDescription}>
-          {description}
-        </Body>
-        {printDescription &&
-          <PrintDescription>
-            {printDescription}
-          </PrintDescription>}
+        <Body hidePrint={!!printDescription}>{description}</Body>
+        {printDescription && (
+          <PrintDescription>{printDescription}</PrintDescription>
+        )}
       </Card>
     )
   }

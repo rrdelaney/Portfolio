@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Card, { CardImg } from './Card'
+import { Card, CardImg } from './Card'
 import { Title, Link, Description, PrintLink } from './Typo'
 
 const ProjectText = styled.div`
@@ -12,7 +12,23 @@ const ProjectText = styled.div`
   }
 `
 
-export default function Project({ name, url, description, img, swapped }) {
+export interface ProjectProps {
+  name: string
+  url: string
+  description: string
+  img: string
+  swapped?: boolean
+  hidePrint?: boolean
+}
+
+export function Project({
+  name,
+  url,
+  description,
+  img,
+  swapped,
+  hidePrint
+}: ProjectProps) {
   const image = <CardImg side src={img} />
   const text = (
     <ProjectText>
@@ -25,7 +41,7 @@ export default function Project({ name, url, description, img, swapped }) {
   )
 
   return (
-    <Card wide>
+    <Card wide hidePrint={hidePrint}>
       {swapped ? image : text}
       {swapped ? text : image}
     </Card>

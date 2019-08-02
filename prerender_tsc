@@ -1,0 +1,3 @@
+--module commonjs
+--outDir build_node
+--jsx react

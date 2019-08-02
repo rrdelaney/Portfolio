@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import Card from './Card'
+import { Card } from './Card'
 
-export default styled.div`
+export const Layout = styled.div`
   display: flex;
   padding: 0 5vw;
   justify-content: center;
@@ -16,7 +16,7 @@ export const Box = styled.div`
   padding: 0 1rem;
 
   @media print {
-    padding: 0
+    padding: 0;
   }
 `
 
@@ -29,7 +29,11 @@ export const PrintGrid = styled.div`
   }
 `
 
-export const PrintGridColumn = styled.div`
+export interface PrintGridColumnProps {
+  col: number
+}
+
+export const PrintGridColumn = styled.div<PrintGridColumnProps>`
   @media print {
     grid-column-start: ${props => props.col};
     grid-row-start: 1;

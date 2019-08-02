@@ -1,12 +1,17 @@
-import { readFileSync, writeFileSync } from 'fs'
-import chalk from 'chalk'
-import React from 'react'
-import { renderToString } from 'react-dom/server'
-import { ServerStyleSheet } from 'styled-components'
-import { minify } from 'html-minifier'
-import App from './src/App'
+const { readFileSync, writeFileSync } = require('fs')
+const chalk = require('chalk')
+const React = require('react')
+const { renderToString } = require('react-dom/server')
+const { ServerStyleSheet } = require('styled-components')
+const { minify } = require('html-minifier')
+const { App } = require('./build_node/App')
 
 const htmlFile = 'build/index.html'
+
+if (process.env.NODE_ENV !== 'production') {
+  console.log(chalk.red('NODE_ENV must be set to production!'))
+  process.exit(1)
+}
 
 console.log(chalk.green('==> Beginning prerendering...'))
 
@@ -15,7 +20,7 @@ const originalHtml = readFileSync(htmlFile).toString()
 
 console.log(chalk.magenta('==> Rendering site on the server'))
 const sheet = new ServerStyleSheet()
-const html = renderToString(sheet.collectStyles(<App />))
+const html = renderToString(sheet.collectStyles(React.createElement(App)))
 const reactHtml = `<div id="root">${html}</div>`
 const reactCss = sheet.getStyleTags()
 

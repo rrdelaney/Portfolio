@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import dedent from 'dedent'
-import Background from './Background'
-import TopNav from './TopNav'
-import About from './About'
-import Project from './Project'
-import DataCard from './DataCard'
-import Work from './Work'
-import GithubRepo from './GithubRepo'
-import Layout, { Box, PrintGrid, PrintGridColumn } from './Layout'
+import { Background } from './Background'
+import { TopNav } from './TopNav'
+import { About } from './About'
+import { Project } from './Project'
+import { DataCard } from './DataCard'
+import { Work } from './Work'
+import { GithubRepo } from './GithubRepo'
+import { Layout, Box, PrintGrid, PrintGridColumn } from './Layout'
 import { Hero, Heading, Break } from './Typo'
 
-export default class App extends Component {
+export class App extends Component {
   aboutContent = dedent`
     Developer currently @ Google
 
@@ -58,11 +58,9 @@ export default class App extends Component {
       text: 'Résumé',
       href: '',
       right: true,
-      onClick: async e => {
+      onClick: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         e.preventDefault()
-        await this.background.forcePrint(true)
         window.print()
-        this.background.forcePrint(false)
       }
     }
   ]
@@ -83,23 +81,31 @@ export default class App extends Component {
 
   tech = {
     Interests: ['Frontend', 'Compilers', 'Developer tools'],
-    Languages: ['JavaScript', 'Reason', 'Scala', 'Python', 'PHP'],
-    Frameworks: ['React', 'GraphQL', 'Angular', 'Django'],
-    Databases: ['MongoDB', 'Postgres', 'Firebase']
+    Languages: ['TypeScript', 'JS', 'Reason', 'Scala', 'Python', 'PHP'],
+    Frameworks: ['React', 'Angular', 'gRPC', 'GraphQL', 'Django'],
+    Databases: ['Postgres', 'MySQL', 'MongoDB', 'Firebase']
   }
 
-  google = []
+  google = [
+    'Working on fiber network visualization tool for internal customers',
+    'Primarily work on frontend using Angular, use Go for backend business APIs',
+    'Write comprehensive integration testing suites for each feature using Protractor and screenshot tests',
+    'Design data-heavy visualizations and UI for stakeholder review',
+    "Involved in TypeScript community at Google, teach TypeScript class and lead workshops for other Googlers, review other's TypeScript Code",
+    'Creating Google-internal component toolkit focused on data visualization for Angular apps'
+  ]
 
   microsoft = [
-    'Working on CMS for Office documentation',
-    'Leading frontend migration to React and GraphQL',
-    'Work across stack, using React and GraphQL API hitting legacy DB',
-    "Contribute to other team's libraries we depend on"
+    'Worked on greenfield CMS for Office documentation',
+    'Feature work spanned stack from frontend to database level',
+    'Lead frontend migration to React and GraphQL',
+    'Migrated team to Git and ran workshops to onboard developers',
+    "Contributed to Microsoft's React Component toolkit"
   ]
 
   datto = [
     'Worked on web app managing fleet of backup devices',
-    'Used an existing codebase to add new features and fix bugs',
+    'Worked in an existing codebase to add new features and fix bugs',
     'Wrote unit tests and negative tests for all added features',
     'Worked with PHP, Linux, and Symfony framework'
   ]
@@ -112,13 +118,11 @@ export default class App extends Component {
 
   render() {
     return (
-      <Background ref={c => (this.background = c)}>
+      <Background>
         <Hero>Ryan Delaney</Hero>
         <TopNav links={this.topLinks} />
         <PrintGrid>
-          <About>
-            {this.aboutContent}
-          </About>
+          <About>{this.aboutContent}</About>
           <PrintGridColumn col={2}>
             <Heading>Work</Heading>
             <Work
@@ -145,9 +149,10 @@ export default class App extends Component {
               time="Fall 2013 - Spring 2016"
               data={this.union}
             />
-            <Heading>Projects</Heading>
+            <Heading hidePrint>Projects</Heading>
             <Layout>
               <Project
+                hidePrint
                 name="Framework Press"
                 url="https://framework.press"
                 description={this.frameworkDescription}
@@ -156,24 +161,15 @@ export default class App extends Component {
             </Layout>
             <Heading>Open Source</Heading>
             <Layout>
-              <GithubRepo hidePrint owner="rrdelaney" name="material-resume" />
               <GithubRepo
                 owner="rrdelaney"
                 name="ReasonablyTyped"
                 printDescription={this.reasonablyTypedDescription}
               />
-              <GithubRepo
-                hidePrint
-                owner="reasonml-community"
-                name="reason-scripts"
-              />
-              <GithubRepo
-                hidePrint
-                owner="reasonml-community"
-                name="bs-loader"
-              />
-              <GithubRepo hidePrint owner="rrdelaney" name="horizon-devtools" />
-              <GithubRepo hidePrint owner="rrdelaney" name="HzQL" />
+              <GithubRepo hidePrint owner="rrdelaney" name="reason-scripts" />
+              <GithubRepo hidePrint owner="rrdelaney" name="bs-loader" />
+              <GithubRepo hidePrint owner="rrdelaney" name="reason-dre" />
+              <GithubRepo hidePrint owner="rrdelaney" name="material-resume" />
             </Layout>
           </PrintGridColumn>
           <PrintGridColumn col={1}>

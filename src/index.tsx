@@ -2,14 +2,20 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 
-const { default: App } = require('./App')
+const { App } = require('./App')
 
 const root = document.getElementById('root')
 ReactDOM.render(<App />, root)
 
+declare var module: {
+  hot?: {
+    accept: (m: string, cb: () => void) => void
+  }
+}
+
 if (module.hot) {
   module.hot.accept('./App', () => {
-    const { default: NextApp } = require('./App')
-    ReactDOM.render(<NextApp />, root)
+    const { App } = require('./App')
+    ReactDOM.render(<App />, root)
   })
 }
