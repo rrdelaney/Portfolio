@@ -5,7 +5,6 @@
 Uses:
 * React
 * styled-components
-* TypeScript
 
 ## Developing
 
