@@ -18,7 +18,7 @@ export default class Document extends NextDocument {
       <Html>
         <Head>
           <link
-            href="https://fonts.googleapis.com/css2?family=Cabin&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Cabin&family=VT323&display=swap"
             rel="stylesheet"
           />
         </Head>
