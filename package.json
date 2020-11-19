@@ -1,24 +1,30 @@
 {
   "name": "portfolio",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.28",
-    "@fortawesome/pro-duotone-svg-icons": "^5.13.0",
-    "@fortawesome/react-fontawesome": "^0.1.9",
-    "next": "^9.3.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
-  },
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
-    "export": "next export"
+    "start": "serve _site",
+    "build": "npm run build:html && npm run build:css",
+    "build:html": "eleventy --input=src",
+    "build:css": "tailwindcss build src/tailwind.css -c tailwind.config.js -o _site/tailwind.css"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rrdelaney/portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rrdelaney/portfolio/issues"
+  },
+  "homepage": "https://github.com/rrdelaney/portfolio#readme",
   "devDependencies": {
-    "@types/node": "^13.13.0",
-    "@types/react": "^16.9.34",
-    "typescript": "^3.8.3"
+    "@11ty/eleventy": "^0.11.1",
+    "autoprefixer": "^10.0.2",
+    "postcss": "^8.1.8",
+    "serve": "^11.3.2",
+    "tailwindcss": "^2.0.1"
   }
 }

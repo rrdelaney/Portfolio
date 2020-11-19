@@ -10,6 +10,7 @@
 /build
 /build_node
 /out
+/_site
 
 # misc
 .DS_Store
